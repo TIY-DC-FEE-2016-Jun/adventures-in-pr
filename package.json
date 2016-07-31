@@ -1,0 +1,29 @@
+{
+  "name": "adventures-in-pr",
+  "version": "1.0.0",
+  "description": "A blog about adventures in public relations!",
+  "main": "index.js",
+  "engines": {
+    "node": "6.2.1"
+  },
+  "scripts": {
+    "postinstall": "grunt build",
+    "start": "http-server ./build/ -p $PORT"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TIY-DC-FEE-2016-Jun/adventures-in-pr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TIY-DC-FEE-2016-Jun/adventures-in-pr/issues"
+  },
+  "homepage": "https://github.com/TIY-DC-FEE-2016-Jun/adventures-in-pr#readme",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "http-server": "^0.9.0"
+  }
+}
