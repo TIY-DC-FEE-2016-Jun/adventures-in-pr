@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                 options: {
                     sourceMap: true,
                 },
-                src: ['src/js/*.module.js', 'src/js/*.js'], //what is our module?
+                src: ['src/js/app/blog.module.js', 'src/js/**/*.js', '!src/js/vendor/**/*.js'],
                 dest: 'build/js/main.js'
             }
         },
