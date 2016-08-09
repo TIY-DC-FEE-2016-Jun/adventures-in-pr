@@ -1,0 +1,20 @@
+{
+  "name": "adventures-in-pr",
+  "description": "A blog about adventures in public relations!",
+  "main": "index.js",
+  "authors": [
+    "Samina Chhatwal <csaminak@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/csaminak/adventures-in-pr",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8"
+  }
+}
