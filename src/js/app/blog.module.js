@@ -25,7 +25,6 @@
             .state('recentPosts', {
                 url: '/recent',
                 templateUrl: '/js/posts/recentPosts.template.html'
-
             })
             .state('createUser', {
                 url: '/create-user',
