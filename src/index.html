@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang='en' ng-app='blog'>
     <head>
         <meta charset='utf-8'>
         <title>Adventures in PR!</title>
@@ -17,39 +17,40 @@
 
         <nav>
             <ul>
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Create Post</li>
+                <li ui-sref='home'>Home</li>
+                <li ui-sref='about'>About Us</li>
+                <li ui-sref='createPost'>Create Post</li>
                 <li>Logout</li>
             </ul>
         </nav>
 
-        <main></main>
+        <main ui-view></main>
 
         <aside>
             <section>
                 <h3>Recent Posts</h3>
                 <ul>
-                    <li></li>
+                    <li ui-sref='recentPosts'></li>
+                    <!-- each li is a month -->
                 </ul>
             </section>
             <section>
                 <h3>Categories</h3>
                 <ul>
-                    <li>Updates</li>
-                    <li>Adventures</li>
-                    <li>Miscellaneous</li>
+                    <li><a ui-sref='category'></a></li>
+                    <!-- category populated from api -->
                 </ul>
             </section>
         </aside>
 
         <footer>
             <ul>
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Login</li>
-                <li>Create User</li>
+                <li ui-sref='home'>Home</li>
+                <li ui-sref='about'>About Us</li>
+                <li ui-sref='login'>Login</li>
+                <li ui-sref='createUser'>Create User</li>
                 <li>Legal</li>
+                <!--ask client-->
             </ul>
             <p>Copyright PR Pros 2016.</p>
         </footer>
