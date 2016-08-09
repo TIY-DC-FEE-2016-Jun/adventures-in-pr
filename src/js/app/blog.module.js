@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('blog', ['ui.router'])
-        .confi(blogConfig);
+        .config(blogConfig);
 
     blogConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
