@@ -50,6 +50,14 @@ module.exports = function(grunt) {
                     src: ['vendor/angular/angular.min.js'],
                     dest: 'build/js/'
                 }]
+            },
+            templates: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/js/',
+                    src: ['**/*.html'],
+                    dest: 'build/js/'
+                }]
             }
         },
 
