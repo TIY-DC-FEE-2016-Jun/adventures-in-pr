@@ -9,3 +9,7 @@ npm-debug.log*
 
 # Coverage directory used by tools like istanbul
 coverage/
+
+# Others
+.sass-cache/
+.DS_Store
