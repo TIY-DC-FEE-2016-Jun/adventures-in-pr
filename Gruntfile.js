@@ -36,6 +36,14 @@ module.exports = function(grunt) {
                 files: [
                     {expand: true, cwd: '.', src: 'img/cropped-notebook-coffee.jpg', dest: 'build/'}
                 ]
+            },
+            vendorjs: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/js/',
+                    src: ['vendor/angular/angular.min.js'],
+                    dest: 'build/js/'
+                }]
             }
         },
 
