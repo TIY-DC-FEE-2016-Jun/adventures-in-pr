@@ -7,12 +7,137 @@
         <meta name='description' content='Blog for Stacy'>
         <meta name='author' content='Front-End TIY Jun 2016'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'>
-        <link href='css/styles.css' rel='stylesheet' type='text/css'>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' type='text/css'>
+        <link rel='stylesheet' href='css/styles.css' type='text/css'>
     </head>
     <body>
         <h1>Adventures in PR!</h1>
+        <p>A catalog of the adventures had by various members of the PR Pros Team.</p>
 
-        
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>About Us</li>
+                <li>Create Post</li>
+                <li>Logout</li>
+            </ul>
+        </nav>
+
+        <main>
+
+            <section class='home'>
+                <h3>Recent Posts</h3>
+                <ul>
+                    <li>
+                        <header>
+                            <h4></h4>
+                            <cite></cite>
+                        </header>
+                        <p></p>
+                        <footer>
+                            <p>Read Post</p>
+                        </footer>
+                    </li>
+                </ul>
+            </section>
+
+            <section class='about-us'>
+                <h3>About Us</h3>
+                <img>
+                <p></p>
+            </section>
+
+            <section class='create-post'>
+                <h3>Create a New Post</h3>
+                <form>
+                    <div>
+                        <label>Titel</label>
+                        <input>
+                    </div>
+                    <div>
+                        <label>Content</label>
+                        <textarea></textarea>
+                    </div>
+                    <div>
+                        <label>Category</label>
+                        <select>
+                            <option></option>
+                        </select>
+                    </div>
+                    <input type='reset' value='Cancel'>
+                    <input type='submit' value='Create Post'>
+                </form>
+            </section>
+
+            <section class='login'>
+                <h3>Login</h3>
+                <form>
+                    <input placeholder='email' type='text'>
+                    <input placeholder='password' type='text'>
+                    <input type='submit' value='login'>
+                </form>
+            </section>
+
+            <section class='create-user'>
+                <h3>Create User</h3>
+                <form>
+                    <input placeholder='name' type='text'>
+                    <input placeholder='email' type='text'>
+                    <input placeholder='password' type='text'>
+                    <input type='submit' value='login'>
+                </form>
+            </section>
+
+            <section class='category'>
+                <h3>Posts in [Category Name]</h3>
+                <ul>
+                    <li>
+                        <a></a>
+                        <button>Delete</button>
+                    </li>
+                </ul>
+            </section>
+
+            <section class='recent-posts'>
+                <h3>Posts from [month]</h3>
+                <ul>
+                    <li>
+                        <a></a>
+                        <button>Delete</button>
+                    </li>
+                </ul>
+            </section>
+
+        </main>
+
+        <aside>
+            <section>
+                <h3>Recent Posts</h3>
+                <ul>
+                    <li></li>
+                </ul>
+            </section>
+            <section>
+                <h3>Categories</h3>
+                <ul>
+                    <li>Updates</li>
+                    <li>Adventures</li>
+                    <li>Miscellaneous</li>
+                </ul>
+            </section>
+        </aside>
+
+        <footer>
+            <ul>
+                <li>Home</li>
+                <li>About Us</li>
+                <li>Login</li>
+                <li>Create User</li>
+                <li>Legal</li>
+            </ul>
+            <p>Copyright PR Pros 2016.</p>
+        </footer>
+
         <script src='js/main.js'></script>
     </body>
 </html>
