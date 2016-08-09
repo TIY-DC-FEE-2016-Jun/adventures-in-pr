@@ -24,9 +24,7 @@
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-copy": "^1.0.0",
-    "http-server": "^0.9.0"
-  },
-  "devDependencies": {
+    "http-server": "^0.9.0",
     "angular": "^1.5.8",
     "angular-mocks": "^1.5.8",
     "chai": "^3.5.0",
