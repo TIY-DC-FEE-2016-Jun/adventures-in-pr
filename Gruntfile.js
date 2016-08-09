@@ -28,14 +28,20 @@ module.exports = function(grunt) {
 
         copy: {
             html: {
-                files: [
-                    { expand: true, cwd: '.', src: 'index.html', dest: 'build/' }
-                ]
+                files: [{
+                        expand: true,
+                        cwd: 'src/',
+                        src: ['index.html'],
+                        dest: 'build/'
+                    }]
             },
             images: {
-                files: [
-                    {expand: true, cwd: '.', src: 'img/cropped-notebook-coffee.jpg', dest: 'build/'}
-                ]
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['img/cropped-notebook-coffee.jpg'],
+                    dest: 'build/'
+                }]
             },
             vendorjs: {
                 files: [{
