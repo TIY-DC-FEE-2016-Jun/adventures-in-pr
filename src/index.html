@@ -12,15 +12,17 @@
         <link rel='stylesheet' href='css/styles.css' type='text/css'>
     </head>
     <body>
-        <h1>Adventures in PR!</h1>
-        <p>A catalog of the adventures had by various members of the PR Pros Team.</p>
+        <header>
+            <h1>Adventures in PR!</h1>
+            <p>A catalog of the adventures had by various members of the PR Pros Team.</p>
+        </header>
 
-        <nav>
-            <ul>
-                <li ui-sref='home'>Home</li>
-                <li ui-sref='about'>About Us</li>
-                <li ui-sref='createPost'>Create Post</li>
-                <li>Logout</li>
+        <nav class='navbar navbar-inverse'>
+            <ul class='nav navbar-nav'>
+                <li><a ui-sref='home'>Home</a></li>
+                <li><a ui-sref='about'>About Us</a></li>
+                <li><a ui-sref='createPost'>Create Post</a></li>
+                <li><a>Logout</a></li>
             </ul>
         </nav>
 
@@ -43,16 +45,16 @@
             </section>
         </aside>
 
-        <footer>
+        <footer class='navbar navbar-default navbar-fixed-bottom navbar-inverse'>
             <ul>
-                <li ui-sref='home'>Home</li>
-                <li ui-sref='about'>About Us</li>
-                <li ui-sref='login'>Login</li>
-                <li ui-sref='createUser'>Create User</li>
-                <li>Legal</li>
+                <li><a ui-sref='home'>Home</a></li>
+                <li><a ui-sref='about'>About Us</a></li>
+                <li><a ui-sref='login'>Login</a></li>
+                <li><a ui-sref='createUser'>Create User</a></li>
+                <li><a>Legal</a></li>
                 <!--ask client-->
             </ul>
-            <p>Copyright PR Pros 2016.</p>
+            <p class='navbar-text navbar-right'>Copyright PR Pros 2016.</p>
         </footer>
 
         <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'></script>
