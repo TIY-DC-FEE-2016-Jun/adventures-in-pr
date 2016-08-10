@@ -28,11 +28,15 @@
             })
             .state('createUser', {
                 url: '/create-user',
-                templateUrl: '/js/acctManagement/createUser.template.html'
+                templateUrl: '/js/acctManagement/createUser.template.html',
+                controller: 'CreateUserController',
+                controllerAs: 'createUser'
             })
             .state('login', {
                 url: '/login',
-                templateUrl: '/js/acctManagement/login.template.html'
+                templateUrl: '/js/acctManagement/login.template.html',
+                controller: 'LoginController',
+                controllerAs: 'loginCtrl',
             })
             .state('category', {
                 url: '/category',
