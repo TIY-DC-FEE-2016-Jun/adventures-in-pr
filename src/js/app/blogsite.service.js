@@ -7,12 +7,12 @@
     BlogSiteService.$inject = ['$http'];
 
     function BlogSiteService($http) {
-        var token;
-        // var currentUser;
+        var apiToken;
+        var currentUser;
 
         return {
-            createUser: createUser
-            // login: login
+            createUser: createUser,
+            login: login
         };
 
         /**
@@ -30,20 +30,38 @@
             }
 
             return $http({
-                url: 'https://tiy-blog-api.herokuapp.com/api',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Authors',
                 method: 'post',
-                dataType: 'json',
                 headers: {
-                    'content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
-                data: {
+                data: angular.toJson({
                     'name': name,
                     'email': email,
                     'password': password
-                }
+                })
+            });
+        }
+
+        function login(email, password) {
+            if (!email || !password) {
+                return null;
+            }
+
+            return $http({
+                url: 'https://tiy-blog-api.herokuapp.com/api/Authors/login',
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: angular.toJson({
+                    'email': email,
+                    'password': password
+                })
             })
             .then(function(userData) {
-                token = userData.id;
+                apiToken = userData.id;
+                currentUser = userData;
             });
         }
     }
