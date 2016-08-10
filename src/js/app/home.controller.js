@@ -4,7 +4,7 @@
     angular.module('blog')
         .controller('HomeController', HomeController);
 
-    CreatePostController.$inject = ['blogsite'];
+    HomeController.$inject = ['blogsite'];
 
     function HomeController(blogsite) {
         var that = this;
