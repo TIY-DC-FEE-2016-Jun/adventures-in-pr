@@ -36,7 +36,9 @@
             })
             .state('category', {
                 url: '/category',
-                templateUrl: '/js/categories/category.template.html'
+                templateUrl: '/js/categories/category.template.html',
+                controller: CategoriesController,
+                controllerAs: catCtrl
             });
     }
 
