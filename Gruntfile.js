@@ -77,8 +77,8 @@ module.exports = function(grunt) {
                 tasks: ['sass']
             },
             js: {
-                files: ['src/js/*.js'],
-                tasks: ['jshint', 'test', 'concat']
+                files: ['src/js/**/*.js'],
+                tasks: ['jshint', /* 'test',*/ 'concat'] 
             },
             html: {
                 files: ['src/index.html'],
