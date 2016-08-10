@@ -4,9 +4,9 @@
     angular.module('blog')
         .factory('blogsite', BlogSiteService);
 
-    BlogSiteService.$inject = ['$http'];
+    BlogSiteService.$inject = ['$http', '$q'];
 
-    function BlogSiteService($http) {
+    function BlogSiteService($http, $q) {
         var apiToken;
         var currentUser;
 
@@ -14,6 +14,14 @@
             createUser: createUser,
             login: login
         };
+
+        // function getCurrentUser() {
+        //     return currentUser;
+        // }
+
+        // function isLoggedIn() {
+        //     return !!apiToken;
+        // }
 
         /**
          * Logged in user can create new user
@@ -43,9 +51,18 @@
             });
         }
 
+        /**
+         * Log in to blog site
+         * @param  {String} email    Email of user
+         * @param  {String} password Password of user
+         * @return {Promise}         XmlHttpRequest object that can implement
+         *                           promise methods
+         */
         function login(email, password) {
-            if (!email || !password) {
-                return null;
+            if (!email) {
+                loginError(email);
+            } else if (!password) {
+                loginError(password);
             }
 
             return $http({
@@ -62,7 +79,23 @@
             .then(function(userData) {
                 apiToken = userData.id;
                 currentUser = userData;
+
+                localStorage.setItem('token', apiToken);
+
+                return userData.data;
             });
+        }
+
+        /**
+         * Throw an error if login fails
+         * @param  {String} field The invalid input
+         * @return {Promise}      A deferred XmlHttpRequest
+         *                        object with an error status of 401
+         */
+        function loginError(field) {
+            var err = new Error('You need a ' + field + ' to login!');
+                err.status = 401;
+                return $q.reject(err);
         }
     }
 
