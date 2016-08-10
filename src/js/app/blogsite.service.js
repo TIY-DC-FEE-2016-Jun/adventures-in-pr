@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('blog')
-        .factor('blogsite', BlogSiteService);
+        .factory('blogsite', BlogSiteService);
 
     BlogSiteService.$inject = ['$http'];
 
@@ -15,8 +15,17 @@
             // login: login
         };
 
+        /**
+         * Logged in user can create new user
+         * @param  {String} name     Name of new user
+         * @param  {String} email    Email of new user
+         * @param  {String} password Password with 1 special char and min 8 char long
+         * @return {Promise}         An XmlHttpRequest object that implements promise methods
+         */
         function createUser(name, email, password) {
             if (!name || !email || !password) {
+                return null;
+            } else if (password.split('').length > 8) {
                 return null;
             }
 
@@ -28,9 +37,9 @@
                     'content-type': 'application/json'
                 },
                 data: {
-                    'name': 'Stacy',
-                    'email': 'stacy@theironyard.com',
-                    'password': 'password'
+                    'name': name,
+                    'email': email,
+                    'password': password
                 }
             })
             .then(function(userData) {
