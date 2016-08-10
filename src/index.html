@@ -36,10 +36,10 @@
                     <!-- each li is a month -->
                 </ul>
             </section>
-            <section ng-controller='CategoriesController as catCtrl'>
+            <section>
                 <h3>Categories</h3>
                 <ul>
-                    <li ng-repeat='category in catCtrl.categories'>
+                    <li ng-repeat='category in homeCtrl.categories'>
                         <a ui-sref='category'>{{category.name}}</a>
                     </li>
                 </ul>
