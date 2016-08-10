@@ -2,16 +2,17 @@
     <h3>Create a New Post</h3>
     <form>
         <div>
-            <label>Title</label>
-            <input>
+            <label for='blogTitle'>Title</label>
+            <input id='blogTitle' type='text' name='title'>
         </div>
         <div>
-            <label>Content</label>
-            <textarea></textarea>
+            <label for='blogContent'>Content</label>
+            <textarea id='blogContent' type='text' name='content'></textarea>
         </div>
         <div>
-            <label>Category</label>
-            <select ng-controller='CategoriesController as catCtrl'>
+            <label for='blogCategory'>Category</label>
+            <select id='blogCategory' name='selectCategory' ng-controller='CategoriesController as catCtrl'>
+                <option value=''>Select Category</option>
                 <option ng-repeat='category in catCtrl.categories' value='{{category.name}}'>
                     {{category.name}}
                 </option>
