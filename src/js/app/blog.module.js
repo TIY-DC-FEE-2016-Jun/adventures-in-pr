@@ -7,7 +7,8 @@
     blogConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function blogConfig($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.when('', '/');
+        $urlRouterProvider.otherwise('/404');
 
         $stateProvider
             .state('home', {
@@ -37,10 +38,17 @@
                 templateUrl: '/js/acctManagement/login.template.html',
                 controller: 'LoginController',
                 controllerAs: 'loginCtrl',
+                param: {
+                    message: null
+                }
             })
             .state('category', {
                 url: '/category',
                 templateUrl: '/js/categories/category.template.html'
+            })
+            .state('404', {
+                url: '/404',
+                templateUrl: '/js/app/404.template.html'
             });
     }
 
