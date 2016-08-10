@@ -12,13 +12,10 @@
 
         return {
             createUser: createUser,
+            getAllCategories: getAllCategories,
             login: login,
             isLoggedIn: isLoggedIn
         };
-
-        // function getCurrentUser() {
-        //     return currentUser;
-        // }
 
         function isLoggedIn() {
             return !!apiToken;
@@ -84,6 +81,23 @@
                 localStorage.setItem('token', apiToken);
 
                 return userData.data;
+            });
+        }
+
+        /**
+         * Sends an http request to retrieve all categories that exists
+         * @return    {Promise}    is an object that holds all the categories that exist
+         */
+        function getAllCategories() {
+            return $http({
+                method: 'get',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Categories',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+                return response.data;
             });
         }
 

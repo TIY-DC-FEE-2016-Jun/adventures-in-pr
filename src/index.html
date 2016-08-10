@@ -39,8 +39,9 @@
             <section>
                 <h3>Categories</h3>
                 <ul>
-                    <li><a ui-sref='category'></a></li>
-                    <!-- category populated from api -->
+                    <li ng-repeat='category in homeCtrl.categories'>
+                        <a ui-sref='category'>{{category.name}}</a>
+                    </li>
                 </ul>
             </section>
         </aside>

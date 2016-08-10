@@ -13,7 +13,9 @@
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: '/js/app/home.template.html'
+                templateUrl: '/js/app/home.template.html',
+                controller: 'HomeController',
+                controllerAs: 'homeCtrl'
             })
             .state('about', {
                 url: '/about',
@@ -22,6 +24,8 @@
             .state('createPost', {
                 url: '/create-post',
                 templateUrl: '/js/posts/createPost.template.html',
+                controller: 'CreatePostController',
+                controllerAs: 'cpCtrl',
                 secure: true
             })
             .state('recentPosts', {
@@ -43,7 +47,9 @@
             })
             .state('category', {
                 url: '/category',
-                templateUrl: '/js/categories/category.template.html'
+                templateUrl: '/js/categories/category.template.html',
+                controller: 'CategoriesController',
+                controllerAs: 'catCtrl'
             })
             .state('404', {
                 url: '/404',
