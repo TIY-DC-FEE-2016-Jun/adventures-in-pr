@@ -2,7 +2,7 @@
     <h3>Create a New Post</h3>
     <form>
         <div>
-            <label>Titel</label>
+            <label>Title</label>
             <input>
         </div>
         <div>
@@ -11,8 +11,10 @@
         </div>
         <div>
             <label>Category</label>
-            <select>
-                <option></option>
+            <select ng-controller='CategoriesController as catCtrl'>
+                <option ng-repeat='category in catCtrl.categories' value='{{category.name}}'>
+                    {{category.name}}
+                </option>
             </select>
         </div>
         <input type='reset' value='Cancel'>

@@ -39,7 +39,9 @@
             <section ng-controller='CategoriesController as catCtrl'>
                 <h3>Categories</h3>
                 <ul>
-                    <li ng-repeat='category in catCtrl.categories()'><a ui-sref='category'>{{category.name}}</a></li>
+                    <li ng-repeat='category in catCtrl.categories'>
+                        <a ui-sref='category'>{{category.name}}</a>
+                    </li>
                     <!-- category populated from api -->
                 </ul>
             </section>
