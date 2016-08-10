@@ -12,7 +12,7 @@
         <div>
             <label for='blogCategory'>Category</label>
             <select id='blogCategory' name='selectCategory' ng-controller='CategoriesController as catCtrl'>
-                <option value=''>Select Category</option>
+                <option value='' selected>Select Category</option>
                 <option ng-repeat='category in catCtrl.categories' value='{{category.name}}'>
                     {{category.name}}
                 </option>
