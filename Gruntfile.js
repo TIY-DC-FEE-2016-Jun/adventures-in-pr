@@ -78,10 +78,10 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['src/js/**/*.js'],
-                tasks: ['jshint', /* 'test',*/ 'concat'] 
+                tasks: ['jshint', /* 'test',*/ 'concat']
             },
             html: {
-                files: ['src/index.html'],
+                files: ['src/**/*.html'],
                 tasks: ['copy:html']
             }
         },
