@@ -46,15 +46,14 @@
          */
         function getAllCategories() {
             return $http({
-                url: 'https://tiy-blog-api.herokuapp.com/api/Categories',
                 method: 'get',
-                dataType: 'json',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Categories',
                 headers: {
-                    'content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
             })
-            .catch(function(error) {
-                console.error(error, 'no categories exists');
+            .then(function(response) {
+                return response.data;
             });
         }
 
