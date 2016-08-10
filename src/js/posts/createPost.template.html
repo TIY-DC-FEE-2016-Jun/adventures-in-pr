@@ -11,9 +11,9 @@
         </div>
         <div>
             <label for='blogCategory'>Category</label>
-            <select id='blogCategory' name='selectCategory' ng-controller='CategoriesController as catCtrl'>
+            <select id='blogCategory' name='selectCategory'>
                 <option value='' selected>Select Category</option>
-                <option ng-repeat='category in catCtrl.categories' value='{{category.name}}'>
+                <option ng-repeat='category cpCtrl.categories' value='{{category.name}}'>
                     {{category.name}}
                 </option>
             </select>

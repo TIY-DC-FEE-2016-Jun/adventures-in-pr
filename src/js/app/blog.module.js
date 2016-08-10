@@ -20,7 +20,9 @@
             })
             .state('createPost', {
                 url: '/create-post',
-                templateUrl: '/js/posts/createPost.template.html'
+                templateUrl: '/js/posts/createPost.template.html',
+                controller: 'CreatePostController',
+                controllerAs: 'cpCtrl'
             })
             .state('recentPosts', {
                 url: '/recent',
@@ -37,8 +39,8 @@
             .state('category', {
                 url: '/category',
                 templateUrl: '/js/categories/category.template.html',
-                controller: CategoriesController,
-                controllerAs: catCtrl
+                controller: 'CategoriesController',
+                controllerAs: 'catCtrl'
             });
     }
 
