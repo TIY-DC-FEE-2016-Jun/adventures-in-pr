@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('blog')
-        .factor('blogsite', BlogSiteService);
+        .factory('blogsite', BlogSiteService);
 
     BlogSiteService.$inject = ['$http'];
 
