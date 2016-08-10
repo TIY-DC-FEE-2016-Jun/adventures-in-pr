@@ -13,7 +13,7 @@
             <label for='blogCategory'>Category</label>
             <select id='blogCategory' name='selectCategory'>
                 <option value='' selected>Select Category</option>
-                <option ng-repeat='category cpCtrl.categories' value='{{category.name}}'>
+                <option ng-repeat='category in cpCtrl.categories' value='{{category.name}}'>
                     {{category.name}}
                 </option>
             </select>
