@@ -7,7 +7,8 @@
     blogConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function blogConfig($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.when('', '/');
+        $urlRouterProvider.otherwise('/404');
 
         $stateProvider
             .state('home', {
@@ -20,7 +21,8 @@
             })
             .state('createPost', {
                 url: '/create-post',
-                templateUrl: '/js/posts/createPost.template.html'
+                templateUrl: '/js/posts/createPost.template.html',
+                secure: true
             })
             .state('recentPosts', {
                 url: '/recent',
@@ -28,15 +30,24 @@
             })
             .state('createUser', {
                 url: '/create-user',
-                templateUrl: '/js/acctManagement/createUser.template.html'
+                templateUrl: '/js/acctManagement/createUser.template.html',
+                controller: 'CreateUserController',
+                controllerAs: 'createUser',
+                secure: true
             })
             .state('login', {
                 url: '/login',
-                templateUrl: '/js/acctManagement/login.template.html'
+                templateUrl: '/js/acctManagement/login.template.html',
+                controller: 'LoginController',
+                controllerAs: 'loginCtrl'
             })
             .state('category', {
                 url: '/category',
                 templateUrl: '/js/categories/category.template.html'
+            })
+            .state('404', {
+                url: '/404',
+                templateUrl: '/js/app/404.template.html'
             });
     }
 
