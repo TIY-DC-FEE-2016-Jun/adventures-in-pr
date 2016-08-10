@@ -14,7 +14,8 @@
             createUser: createUser,
             getAllCategories: getAllCategories,
             login: login,
-            isLoggedIn: isLoggedIn
+            isLoggedIn: isLoggedIn,
+            logOut: logOut
         };
 
         function isLoggedIn() {
@@ -111,6 +112,11 @@
             var err = new Error('You need a ' + field + ' to login!');
                 err.status = 401;
                 return $q.reject(err);
+        }
+
+        function logOut() {
+            apiToken = null;
+            currentUser = null;
         }
     }
 

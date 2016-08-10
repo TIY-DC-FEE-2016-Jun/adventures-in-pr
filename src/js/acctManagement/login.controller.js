@@ -9,8 +9,6 @@
     function LoginController($state, blogsite) {
         var that = this;
 
-        this.isLoggedIn = blogsite.isLoggedIn();
-
         this.userInfo = {};
 
         this.authenticate = function authenticate() {
