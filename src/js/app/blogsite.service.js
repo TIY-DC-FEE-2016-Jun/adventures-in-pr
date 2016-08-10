@@ -11,9 +11,11 @@
         // var currentUser;
 
         return {
-            createUser: createUser
+            createUser: createUser,
             // login: login
+            getAllCategories: getAllCategories
         };
+
 
         function createUser(name, email, password) {
             if (!name || !email || !password) {
@@ -37,6 +39,25 @@
                 token = userData.id;
             });
         }
+
+        /**
+         * Sends an http request to retrieve all categories that exists
+         * @return    {Promise}    is an object that holds all the categories that exist
+         */
+        function getAllCategories() {
+            return $http({
+                url: 'https://tiy-blog-api.herokuapp.com/api/Categories',
+                method: 'get',
+                dataType: 'json',
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            .catch(function(error) {
+                console.error(error, 'no categories exists');
+            });
+        }
+
     }
 
 
