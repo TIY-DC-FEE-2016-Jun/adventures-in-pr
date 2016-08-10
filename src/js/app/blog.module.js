@@ -21,7 +21,8 @@
             })
             .state('createPost', {
                 url: '/create-post',
-                templateUrl: '/js/posts/createPost.template.html'
+                templateUrl: '/js/posts/createPost.template.html',
+                secure: true
             })
             .state('recentPosts', {
                 url: '/recent',
@@ -31,16 +32,14 @@
                 url: '/create-user',
                 templateUrl: '/js/acctManagement/createUser.template.html',
                 controller: 'CreateUserController',
-                controllerAs: 'createUser'
+                controllerAs: 'createUser',
+                secure: true
             })
             .state('login', {
                 url: '/login',
                 templateUrl: '/js/acctManagement/login.template.html',
                 controller: 'LoginController',
-                controllerAs: 'loginCtrl',
-                param: {
-                    message: null
-                }
+                controllerAs: 'loginCtrl'
             })
             .state('category', {
                 url: '/category',

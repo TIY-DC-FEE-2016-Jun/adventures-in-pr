@@ -12,16 +12,17 @@
 
         return {
             createUser: createUser,
-            login: login
+            login: login,
+            isLoggedIn: isLoggedIn
         };
 
         // function getCurrentUser() {
         //     return currentUser;
         // }
 
-        // function isLoggedIn() {
-        //     return !!apiToken;
-        // }
+        function isLoggedIn() {
+            return !!apiToken;
+        }
 
         /**
          * Logged in user can create new user
