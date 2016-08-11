@@ -1,3 +1,7 @@
 .footer {
-    color: $footerTxtColor;
+    list-style: none;
+
+    li a {
+        color: $footerTxtColor;
+    }
 }
