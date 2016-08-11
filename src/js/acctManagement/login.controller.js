@@ -15,7 +15,7 @@
             console.log('start auth');
             blogsite.login(that.userInfo.email, that.userInfo.password)
                 .then(function(data) {
-                    console.log('authenticated', data);
+                    console.log('authenticated user', data);
                     $state.go('createPost');
                 })
                 .catch(function(err) {
