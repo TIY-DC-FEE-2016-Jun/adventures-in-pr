@@ -1,4 +1,4 @@
 .sideBar {
     float: right;
-    border-left: 3px solid blue;
+    border-left: $sideBarBorderWidth solid $sideBarBorderColor;
 }
