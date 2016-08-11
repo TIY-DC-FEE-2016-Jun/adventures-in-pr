@@ -26,28 +26,28 @@
             </ul>
         </nav>
 
-        <main ui-view></main>
-
         <aside class='sideBar'>
             <section>
                 <h3>Recent Posts</h3>
                 <ul>
-                    <li ui-sref='recentPosts'></li>
-                    <!-- each li is a month -->
+                    <li ui-sref='recentPosts'>Month goes here</li>
                 </ul>
             </section>
-            <section>
+            <section ng-controller='IndexController as index'>
                 <h3>Categories</h3>
                 <ul>
-                    <li ng-repeat='category in homeCtrl.categories'>
+                    <li ng-repeat='category in index.categories'>
                         <a ui-sref='category'>{{category.name}}</a>
                     </li>
                 </ul>
             </section>
         </aside>
 
+        <main ui-view></main>
+
         <footer class='navbar navbar-default navbar-fixed-bottom navbar-inverse'>
-            <ul ng-controller='NavController as nav'>
+
+            <ul class='footer' ng-controller='NavController as nav'>
                 <li><a ui-sref='home'>Home</a></li>
                 <li><a ui-sref='about'>About Us</a></li>
                 <li ng-hide='nav.loggedIn()'><a ui-sref='login'>Login</a></li>
