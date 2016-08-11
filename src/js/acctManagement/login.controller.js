@@ -4,10 +4,12 @@
     angular.module('blog')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$state', 'blogsite'];
+    LoginController.$inject = ['$stateParams', '$state', 'blogsite'];
 
-    function LoginController($state, blogsite) {
+    function LoginController($stateParams, $state, blogsite) {
         var that = this;
+
+        this.message = $stateParams.message;
 
         this.userInfo = {};
 
@@ -20,6 +22,8 @@
                 })
                 .catch(function(err) {
                     console.error('unable to authenticate', err.status);
+
+                    that.message = '401 Error - user/password combo does not exist'; 
                 });
         };
     }
