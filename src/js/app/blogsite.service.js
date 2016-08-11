@@ -14,12 +14,9 @@
             createUser: createUser,
             getAllCategories: getAllCategories,
             login: login,
-            isLoggedIn: isLoggedIn
+            isLoggedIn: isLoggedIn,
+            logOut: logOut
         };
-
-        function isLoggedIn() {
-            return !!apiToken;
-        }
 
         /**
          * Logged in user can create new user
@@ -75,12 +72,11 @@
                 })
             })
             .then(function(userData) {
-                apiToken = userData.id;
-                currentUser = userData;
-
+                apiToken = userData.data.id;
+                currentUser = userData.data;
+                console.log('currentUser', currentUser);
                 localStorage.setItem('token', apiToken);
-
-                return userData.data;
+                return currentUser;
             });
         }
 
@@ -111,6 +107,15 @@
             var err = new Error('You need a ' + field + ' to login!');
                 err.status = 401;
                 return $q.reject(err);
+        }
+
+        function isLoggedIn() {
+            return !!apiToken;
+        }
+
+        function logOut() {
+            apiToken = null;
+            currentUser = null;
         }
     }
 

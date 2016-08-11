@@ -17,12 +17,12 @@
             <p>A catalog of the adventures had by various members of the PR Pros Team.</p>
         </header>
 
-        <nav class='navbar navbar-inverse'>
+        <nav ng-controller='NavController as nav' class='navbar navbar-inverse'>
             <ul class='nav navbar-nav'>
                 <li><a ui-sref='home'>Home</a></li>
                 <li><a ui-sref='about'>About Us</a></li>
-                <li><a ui-sref='createPost'>Create Post</a></li>
-                <li><a>Logout</a></li>
+                <li ng-show='nav.loggedIn()'><a ui-sref='createPost'>Create Post</a></li>
+                <li ng-show='nav.loggedIn()'><a>Logout</a></li>
             </ul>
         </nav>
 
@@ -46,11 +46,12 @@
         <main ui-view></main>
 
         <footer class='navbar navbar-default navbar-fixed-bottom navbar-inverse'>
-            <ul class='footer'>
+
+            <ul class='footer' ng-controller='NavController as nav'>
                 <li><a ui-sref='home'>Home</a></li>
                 <li><a ui-sref='about'>About Us</a></li>
-                <li><a ui-sref='login'>Login</a></li>
-                <li><a ui-sref='createUser'>Create User</a></li>
+                <li ng-hide='nav.loggedIn()'><a ui-sref='login'>Login</a></li>
+                <li ng-show='nav.loggedIn()'><a ui-sref='createUser'>Create User</a></li>
                 <li><a>Legal</a></li>
                 <!--ask client-->
             </ul>
