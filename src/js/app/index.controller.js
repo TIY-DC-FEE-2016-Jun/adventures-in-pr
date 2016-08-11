@@ -2,11 +2,11 @@
     'use strict';
 
     angular.module('blog')
-        .controller('HomeController', HomeController);
+        .controller('IndexController', IndexController);
 
-    HomeController.$inject = ['blogsite'];
+    IndexController.$inject = ['blogsite'];
 
-    function HomeController(blogsite) {
+    function IndexController(blogsite) {
         var that = this;
         this.categories = [];
 
