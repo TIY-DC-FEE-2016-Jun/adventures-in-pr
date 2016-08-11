@@ -98,8 +98,8 @@ module.exports = function(grunt) {
                         browsers: ['PhantomJS'],
                         singleRun: true,
                         files: [
-                            'node_modules/angular/angular.min.js',
-                            'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+                            'node_modules/angular/angular.js',
+                            'node_modules/angular-ui-router/release/angular-ui-router.js',
                             'node_modules/angular-mocks/angular-mocks.js',
                             'src/js/*.module.js',
                             'src/js/**/*.js',
