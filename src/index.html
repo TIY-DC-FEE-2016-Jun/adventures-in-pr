@@ -22,7 +22,7 @@
                 <li><a ui-sref='home'>Home</a></li>
                 <li><a ui-sref='about'>About Us</a></li>
                 <li ng-show='nav.loggedIn()'><a ui-sref='createPost'>Create Post</a></li>
-                <li ng-show='nav.loggedIn()'><a>Logout</a></li>
+                <li ng-show='nav.loggedIn()' ng-click='nav.logOut()'><a>Logout</a></li>
             </ul>
         </nav>
 

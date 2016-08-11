@@ -137,6 +137,7 @@
         function logOut() {
             apiToken = null;
             currentUser = null;
+            localStorage.removeItem('currentUser');
         }
     }
 
