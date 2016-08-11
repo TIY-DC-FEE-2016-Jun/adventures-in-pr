@@ -24,6 +24,23 @@
             assert.isFunction(blogsite.logOut, 'logOut function exists');
         });
 
+        test('getAllCategories able to retrieve categories', function() {
+            var result = blogsite.getAllCategories();
+
+            assert.isObject(result, 'getAllCategories returns an object');
+            assert.isFunction(result.then, 'result has a then method');
+            assert.isFunction(result.catch, 'result has a catch method');
+
+            result
+                .then(function(categories){
+                    assert.isArray(categories, 'the data in then method is an array');
+                    assert.isObject(categories[0], 'inside categories is an object');
+                    assert.strictEqual(categories[0].name, 'each object has a name');
+                });
+
+        });
+
+
     });
 
 
