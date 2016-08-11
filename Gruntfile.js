@@ -101,9 +101,12 @@ module.exports = function(grunt) {
                             'node_modules/angular/angular.js',
                             'node_modules/angular-ui-router/release/angular-ui-router.js',
                             'node_modules/angular-mocks/angular-mocks.js',
-                            'src/js/blog.module.js',
+                            'src/js/app/blog.module.js',
                             'src/js/**/*.js',
                             'test/specs/**/*.js'
+                        ],
+                        exclude: [
+                            'src/js/vendor/**/*.*'
                         ],
                         preprocessors: {
                         'src/js/**/*.js': ['coverage']
