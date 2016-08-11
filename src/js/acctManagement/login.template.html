@@ -1,5 +1,6 @@
 <section class='login'>
     <h3>Login</h3>
+
     <form
         novalidate
         name='login'
@@ -18,4 +19,9 @@
             required>
         <input type='submit' value='login'>
     </form>
+
+    <p class='alert alert-warning' ng-show='loginCtrl.message'>
+        {{loginCtrl.message}}
+    </p>
+
 </section>

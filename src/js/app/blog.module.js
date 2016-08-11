@@ -2,7 +2,8 @@
     'use strict';
 
     angular.module('blog', ['ui.router'])
-        .config(blogConfig);
+        .config(blogConfig)
+        .run(ghStartup);
 
     blogConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -43,7 +44,10 @@
                 url: '/login',
                 templateUrl: '/js/acctManagement/login.template.html',
                 controller: 'LoginController',
-                controllerAs: 'loginCtrl'
+                controllerAs: 'loginCtrl',
+                params: {
+                    message: null
+                }
             })
             .state('category', {
                 url: '/category',
@@ -55,6 +59,21 @@
                 url: '/404',
                 templateUrl: '/js/app/404.template.html'
             });
+    }
+
+    ghStartup.$inject = ['$rootScope', '$state', 'blogsite'];
+
+    function ghStartup($rootScope, $state, blogsite) {
+        $rootScope.$on('$stateChangeStart', function(e, toState) {
+            if (toState.secure && !blogsite.isLoggedIn()) {
+                e.preventDefault();
+                console.log('not logged in');
+
+                $state.go('login', {
+                    message: 'You must log in first!'
+                });
+            }
+        });
     }
 
 })();
