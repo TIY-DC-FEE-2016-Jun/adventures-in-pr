@@ -78,7 +78,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['src/js/**/*.js'],
-                tasks: ['jshint', /* 'test',*/ 'concat']
+                tasks: ['jshint', 'test', 'concat']
             },
             html: {
                 files: ['src/**/*.html'],
@@ -98,7 +98,8 @@ module.exports = function(grunt) {
                         browsers: ['PhantomJS'],
                         singleRun: true,
                         files: [
-                            'node_modules/angular/angular.js',
+                            'node_modules/angular/angular.min.js',
+                            'node_modules/angular-ui-router/release/angular-ui-router.min.js',
                             'node_modules/angular-mocks/angular-mocks.js',
                             'src/js/*.module.js',
                             'src/js/**/*.js',
@@ -125,6 +126,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('test', ['karma']);
-    grunt.registerTask('build', ['clean', 'jshint', /*'test',*/ 'concat', 'sass', 'copy']);
+    grunt.registerTask('build', ['clean', 'jshint', 'test', 'concat', 'sass', 'copy']);
     grunt.registerTask('default', ['build']);
 };
