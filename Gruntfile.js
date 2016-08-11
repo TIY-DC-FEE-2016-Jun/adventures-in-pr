@@ -101,7 +101,7 @@ module.exports = function(grunt) {
                             'node_modules/angular/angular.js',
                             'node_modules/angular-ui-router/release/angular-ui-router.js',
                             'node_modules/angular-mocks/angular-mocks.js',
-                            'src/js/*.module.js',
+                            'src/js/blog.module.js',
                             'src/js/**/*.js',
                             'test/specs/**/*.js'
                         ],
