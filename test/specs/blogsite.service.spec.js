@@ -12,7 +12,15 @@
             blogsite = _blogsite_;
             $httpBackend = _$httpBackend_;
 
+            $httpBackend
+                .whenGET('https://tiy-blog-api.herokuapp.com/api/Categories')
+                .respond([
+                    {id: 798797, name: 'updates'}
+                ]);
 
+            $httpBackend
+                .whenGET('/js/app/home.template.html')
+                .respond('<h1>Mock Home Template</h1>');
 
         }));
 
@@ -24,7 +32,7 @@
             assert.isFunction(blogsite.logOut, 'logOut function exists');
         });
 
-        test('getAllCategories able to retrieve categories', function() {
+        test('getAllCategories able to retrieve categories', function(done) {
             var result = blogsite.getAllCategories();
 
             assert.isObject(result, 'getAllCategories returns an object');
@@ -32,12 +40,18 @@
             assert.isFunction(result.catch, 'result has a catch method');
 
             result
-                .then(function(categories){
+                .then(function(categories) {
                     assert.isArray(categories, 'the data in then method is an array');
                     assert.isObject(categories[0], 'inside categories is an object');
-                    assert.strictEqual(categories[0].name, 'each object has a name');
+                    done();
+                })
+                .catch(function(err) {
+                    console.log(err);
+                    assert.isFail('should not be in catch for getAllCategories');
+                    done();
                 });
 
+            $httpBackend.flush();
         });
 
 
