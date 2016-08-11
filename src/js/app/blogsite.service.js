@@ -10,6 +10,8 @@
         var apiToken;
         var currentUser;
 
+        init();
+
         return {
             createUser: createUser,
             getAllCategories: getAllCategories,
@@ -17,6 +19,21 @@
             isLoggedIn: isLoggedIn,
             logOut: logOut
         };
+
+        function init() {
+            var loggedInUser = null;
+
+            try {
+                loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
+            } catch(err) {
+                //does not matter if loggedInUser does not exist or is invalid
+                //because user will just log in with form
+            }
+
+            if (loggedInUser) {
+                apiToken = loggedInUser.userToken;
+            }
+        }
 
         /**
          * Logged in user can create new user
@@ -28,7 +45,7 @@
         function createUser(name, email, password) {
             if (!name || !email || !password) {
                 return null;
-            } else if (password.split('').length > 8) {
+            } else if (password.length < 8) {
                 return null;
             }
 
@@ -75,7 +92,11 @@
                 apiToken = userData.data.id;
                 currentUser = userData.data;
                 console.log('currentUser', currentUser);
-                localStorage.setItem('token', apiToken);
+                localStorage
+                    .setItem('currentUser', angular.toJson({
+                        userToken: apiToken,
+                        userEmail: email
+                    }));
                 return currentUser;
             });
         }
@@ -116,6 +137,7 @@
         function logOut() {
             apiToken = null;
             currentUser = null;
+            localStorage.removeItem('currentUser');
         }
     }
 
