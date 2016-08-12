@@ -107,19 +107,6 @@
             });
         }
 
-
-        /**
-         * Return an error if login fails
-         * @param  {String} field The invalid input
-         * @return {Promise}      A deferred XMLHttpRequest
-         *                        object with an error status of 401
-         */
-        function loginError(field) {
-            var err = new Error('You need a ' + field + ' to login!');
-                err.status = 401;
-                return $q.reject(err);
-        }
-
         /**
          * Is the user logged in or not
          * @return {Boolean}    If apiToken exists, then fn will return true.
@@ -137,6 +124,18 @@
             apiToken = null;
             currentUser = null;
             localStorage.removeItem('currentUser');
+        }
+
+        /**
+         * Return an error if login fails
+         * @param  {String} field The invalid input
+         * @return {Promise}      A deferred XMLHttpRequest
+         *                        object with an error status of 401
+         */
+        function loginError(field) {
+            var err = new Error('You need a ' + field + ' to login!');
+                err.status = 401;
+                return $q.reject(err);
         }
 
         /**
