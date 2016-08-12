@@ -6,13 +6,13 @@
         name='login'
         ng-submit='login.$valid && loginCtrl.authenticate()'>
         <input
-            type='text'
+            type='email'
             name='email'
             ng-model='loginCtrl.userInfo.email'
             placeholder='email'
             required>
         <input
-            type='text'
+            type='password'
             name='password'
             ng-model='loginCtrl.userInfo.password'
             placeholder='password'
