@@ -4,9 +4,9 @@
     angular.module('blog')
         .controller('CreatePostController', CreatePostController);
 
-    CreatePostController.$inject = ['blogsite'];
+    CreatePostController.$inject = ['blogsite', '$state'];
 
-    function CreatePostController(blogsite) {
+    function CreatePostController(blogsite, $state) {
         var that = this;
         this.categories = [];
         this.blogPost = {};
@@ -29,6 +29,7 @@
             console.log(blogPost);
             blogsite.submitBlogPost(blogPost);
             that.blogPost = {};
+            $state.go('home');
         }
 
         blogsite.getAllCategories()
