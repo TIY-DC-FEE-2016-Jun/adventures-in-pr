@@ -13,6 +13,7 @@
         init();
 
         return {
+            getAuthor: getAuthor,
             createUser: createUser,
             login: login,
             isLoggedIn: isLoggedIn,
@@ -22,22 +23,38 @@
         };
 
         /**
+         * Returns the currentAuthor
+         * @return  {Object}     the author's information for the given id
+         */
+        function getAuthor() {
+            return $http({
+                url: 'https://tiy-blog-api.herokuapp.com/api/Authors/' + currentUser.userId,
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiToken
+                },
+            })
+            .then(function(response) {
+                return response.data;
+            });
+        }
+
+        /**
          * If user has logged in previously, this function will retrieve
          * user data from local storage and save the token.
          * @return {void}
          */
         function init() {
-            var loggedInUser = null;
-
             try {
-                loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
+                currentUser = JSON.parse(localStorage.getItem('currentUser'));
             } catch(err) {
                 //does not matter if loggedInUser does not exist or is invalid
                 //because user will just log in with form
             }
 
-            if (loggedInUser) {
-                apiToken = loggedInUser.userToken;
+            if (currentUser) {
+                apiToken = currentUser.userToken;
             }
         }
 
@@ -111,7 +128,8 @@
                 localStorage
                     .setItem('currentUser', angular.toJson({
                         userToken: apiToken,
-                        userEmail: email
+                        userEmail: email,
+                        userId: currentUser.userId
                     }));
                 return currentUser;
             });
@@ -171,7 +189,7 @@
          */
         function submitBlogPost(blogPost) {
             if (!blogPost) {
-                console.log('no blog post, unable cannot post anything');
+                return $q.reject(new Error('blogpost is empty'));
             }
             return $http({
                 method: 'post',
@@ -182,8 +200,9 @@
                 },
                 data: angular.toJson(blogPost)
             })
-            .then(function(data) {
-                console.log(data);
+            .then(function(response) {
+                console.log(response.data);
+                return response.data;
             });
         }
 

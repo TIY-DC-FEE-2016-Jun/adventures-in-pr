@@ -8,6 +8,7 @@
     </section>
 
     <form name='createPost' ng-submit='createPost.$valid && cpCtrl.createPost(cpCtrl.blogPost)' novalidate>
+        <p>Will be posted as {{cpCtrl.currentAuthor.name}}</p>
         <div>
             <label for='blogTitle'>Title</label>
             <input id='blogTitle' type='text' name='title' ng-model='cpCtrl.blogPost.title' required>
