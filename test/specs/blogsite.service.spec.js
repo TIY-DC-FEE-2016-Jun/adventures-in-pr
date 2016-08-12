@@ -42,6 +42,44 @@
                     err: {status: 401}
                 });
 
+            $httpBackend
+                .when('POST', 'https://tiy-blog-api.herokuapp.com/api/Authors', {
+                    name: 'Jon',
+                    email: null,
+                    password: '123456789'
+                })
+                .respond({
+                    err: {status: 401}
+                });
+
+            $httpBackend
+                .when('POST', 'https://tiy-blog-api.herokuapp.com/api/Authors', {
+                    name: 'Jon',
+                    email: 'jon@yahoo.com',
+                    password: null
+                })
+                .respond({
+                    err: {status: 401}
+                });
+
+            $httpBackend
+                .when('POST', 'https://tiy-blog-api.herokuapp.com/api/Authors', {
+                    name: 'Jon',
+                    email: 'jon@yahoo.com',
+                    password: 123
+                })
+                .respond({
+                    err: {status: 401}
+                });
+
+            $httpBackend
+                .when('POST', 'https://tiy-blog-api.herokuapp.com/api/Authors', {
+
+                })
+                .respond({
+                    err: {status: 401}
+                });
+
         }));
 
         test('blogsite service functions exist', function() {
@@ -73,7 +111,24 @@
                 })
                 .catch(function(err) {
                     console.log(err);
-                    assert.isFail('should not be in catch for createAuthor');
+                    assert.isFail('should not be in catch for createUser');
+                    done();
+                });
+
+            $httpBackend.flush();
+        });
+
+        test('cannot create a new author without arguments', function(done) {
+            var result = blogsite.createUser();
+
+            result
+                .then(function(err) {
+                    console.log(err);
+                    assert.fail('should not be in then if new author fn has no arguments');
+                    done();
+                })
+                .catch(function(err) {
+                    assert.strictEqual(err.status, '401', 'cannot create new author w/o name');
                     done();
                 });
 
@@ -86,11 +141,89 @@
             result
                 .then(function(err) {
                     console.log(err);
-                    assert.fail('should not be in then if author has no name');
+                    assert.fail('should not be in then if new author has no name');
                     done();
                 })
                 .catch(function(err) {
                     assert.strictEqual(err.status, '401', 'cannot create new author w/o name');
+                    done();
+                });
+
+            $httpBackend.flush();
+        });
+
+        test('cannot create a new author without an email', function(done) {
+            var result = blogsite.createUser('Jon', null, '123456789');
+
+            result
+                .then(function(err) {
+                    console.log(err);
+                    assert.fail('should not be in then if author has no email');
+                    done();
+                })
+                .catch(function(err) {
+                    assert.strictEqual(err.status, '401', 'cannot create new author w/o email');
+                    done();
+                });
+
+            $httpBackend.flush();
+        });
+
+        test('cannot create a new author if email is not valid', function(done) {
+            var resultOne = blogsite.createUser('Jon', 123, '123456789');
+
+            resultOne
+                .then(function(err) {
+                    console.log(err);
+                    assert.fail('should not be in then if new author has invalid email');
+                    done();
+                })
+                .catch(function(err) {
+                    assert.strictEqual(
+                        err.status,
+                        '401',
+                        'cannot create new author with invalid email'
+                    );
+                    done();
+                });
+
+            $httpBackend.flush();
+        });
+
+        test('cannot create a new author without a password', function(done) {
+            var result = blogsite.createUser('Jon', 'jon@yahoo.com', null);
+
+            result
+                .then(function(err) {
+                    console.log(err);
+                    assert.fail('should not be in then if new author has no password');
+                    done();
+                })
+                .catch(function(err) {
+                    assert.strictEqual(err.status, '401', 'cannot create new author w/o password');
+                    done();
+                });
+
+            $httpBackend.flush();
+        });
+
+        test('cannot create a new author without a password', function(done) {
+            var result = blogsite.createUser('Jon', 'jon@yahoo.com', 123);
+
+            result
+                .then(function(err) {
+                    console.log(err);
+                    assert.fail(
+                        'should not be in then if new author does not have valid password'
+                    );
+                    done();
+                })
+                .catch(function(err) {
+                    assert.strictEqual(
+                        err.status,
+                        '401',
+                        'cannot create new author w/o valid password'
+                    );
                     done();
                 });
 
