@@ -196,6 +196,7 @@
                 data: angular.toJson(blogPost)
             })
             .then(function(response) {
+                console.log(response.data);
                 return response.data;
             });
         }
