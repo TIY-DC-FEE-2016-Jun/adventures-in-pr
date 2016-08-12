@@ -50,11 +50,11 @@
          */
         function createUser(name, email, password) {
             if (!name) {
-                inputError(name);
+                return inputError(name);
             } else if (!email){
-                inputError(email);
+                return inputError(email);
             } else if (!password) {
-                inputError(password);
+                return inputError(password);
             } else if (password.length < 8) {
                 return null;
             }
@@ -82,9 +82,9 @@
          */
         function login(email, password) {
             if (!email) {
-                inputError(email);
+                return inputError(email);
             } else if (!password) {
-                inputError(password);
+                return inputError(password);
             }
 
             return $http({
@@ -138,8 +138,8 @@
          */
         function inputError(field) {
             var err = new Error('You need a ' + field + ' to login!');
-                err.status = 401;
-                return $q.reject(err);
+            err.status = '401';
+            return $q.reject(err);
         }
 
         /**
