@@ -69,7 +69,7 @@
         }
 
         /**
-         * Log in to blog site
+         * Log in to blog site and store user info in local storage. 
          * @param  {String} email    Email of user
          * @param  {String} password Password of user
          * @return {Promise}         XMLHttpRequest object that can implement
@@ -135,10 +135,19 @@
                 return $q.reject(err);
         }
 
+        /**
+         * Is the user logged in or not
+         * @return {Boolean}    If apiToken exists, then fn will return true.
+         */
         function isLoggedIn() {
             return !!apiToken;
         }
 
+        /**
+         * Log out user from the app by forgetting token and user data.
+         * Removes logged in user data from local storage.
+         * @return {void}
+         */
         function logOut() {
             apiToken = null;
             currentUser = null;
