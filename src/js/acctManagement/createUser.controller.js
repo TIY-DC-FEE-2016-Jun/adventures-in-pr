@@ -32,6 +32,11 @@
             });
         };
 
+        this.addAnother = function addAnotherAuthor() {
+            that.message = null;
+            that.userInfo = null;
+        }; 
+
     }
 
 })();
