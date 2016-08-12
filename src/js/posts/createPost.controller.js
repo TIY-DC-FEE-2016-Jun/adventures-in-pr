@@ -4,13 +4,20 @@
     angular.module('blog')
         .controller('CreatePostController', CreatePostController);
 
-    CreatePostController.$inject = ['blogsite'];
+    CreatePostController.$inject = ['blogsite', '$state'];
 
-    function CreatePostController(blogsite) {
+    function CreatePostController(blogsite, $state) {
         var that = this;
         this.categories = [];
         this.blogPost = {};
         this.createPost = createPost;
+        this.currentAuthor = null;
+
+
+        blogsite.getAuthor()
+            .then(function(author) {
+                that.currentAuthor = author;
+            });
 
         /**
          * Sends a blogPost to the service submitBlogPost and then resets
@@ -22,6 +29,7 @@
             console.log(blogPost);
             blogsite.submitBlogPost(blogPost);
             that.blogPost = {};
+            $state.go('home');
         }
 
         blogsite.getAllCategories()

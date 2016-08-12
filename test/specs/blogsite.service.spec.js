@@ -22,6 +22,15 @@
                 .whenGET('/js/app/home.template.html')
                 .respond('<h1>Mock Home Template</h1>');
 
+            $httpBackend
+                .whenPOST('https://tiy-blog-api.herokuapp.com/api/Posts')
+                .respond({data: {
+                    id: '38297',
+                    title: 'testing title',
+                    content: 'test content',
+                    date: new Date(),
+                    categoryId: '8799'
+                }});
         }));
 
         test('blogsite service functions exist', function() {
@@ -54,6 +63,13 @@
             $httpBackend.flush();
         });
 
+        test('getAuthor function is able to get author', function() {
+
+        });
+
+        test('submitBlogPost able to add post', function() {
+
+        });
 
     });
 
