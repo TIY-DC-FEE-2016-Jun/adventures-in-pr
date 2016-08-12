@@ -45,7 +45,7 @@
          * @param  {String} name     Name of new user
          * @param  {String} email    Email of new user
          * @param  {String} password Password with 1 special char and min 8 char long
-         * @return {Promise}         XmlHttpRequest object that implements promise methods
+         * @return {Promise}         XMLHttpRequest object that implements promise methods
          */
         function createUser(name, email, password) {
             if (!name || !email || !password) {
@@ -72,7 +72,7 @@
          * Log in to blog site
          * @param  {String} email    Email of user
          * @param  {String} password Password of user
-         * @return {Promise}         XmlHttpRequest object that can implement
+         * @return {Promise}         XMLHttpRequest object that can implement
          *                           promise methods
          */
         function login(email, password) {
@@ -124,9 +124,9 @@
         }
 
         /**
-         * Throw an error if login fails
+         * Return an error if login fails
          * @param  {String} field The invalid input
-         * @return {Promise}      A deferred XmlHttpRequest
+         * @return {Promise}      A deferred XMLHttpRequest
          *                        object with an error status of 401
          */
         function loginError(field) {
