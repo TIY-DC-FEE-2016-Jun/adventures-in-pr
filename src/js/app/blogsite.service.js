@@ -13,6 +13,7 @@
         init();
 
         return {
+            getAuthor: getAuthor,
             createUser: createUser,
             login: login,
             isLoggedIn: isLoggedIn,
@@ -20,6 +21,24 @@
             getAllCategories: getAllCategories,
             submitBlogPost: submitBlogPost
         };
+
+        /**
+         * Returns the currentAuthor
+         * @return  {Object}     the author's information for the given id
+         */
+        function getAuthor() {
+            return $http({
+                url: 'https://tiy-blog-api.herokuapp.com/api/Authors/' + currentUser.userId,
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiToken
+                },
+            })
+            .then(function(response) {
+                return response.data;
+            });
+        }
 
         /**
          * If user has logged in previously, this function will retrieve
