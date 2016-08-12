@@ -20,6 +20,9 @@
             logOut: logOut
         };
 
+
+
+
         function init() {
             var loggedInUser = null;
 
@@ -103,7 +106,7 @@
 
         /**
          * Sends an http request to retrieve all categories that exists
-         * @return    {Promise}    is an object that holds all the categories that exist
+         * @return    {Promise}    an XHR object that can implement promises
          */
         function getAllCategories() {
             return $http({
