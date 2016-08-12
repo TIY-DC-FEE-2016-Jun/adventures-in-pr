@@ -50,13 +50,19 @@
          */
         function createUser(name, email, password) {
             if (!name) {
-                return inputError(name);
-            } else if (!email){
-                return inputError(email);
-            } else if (!password) {
-                return inputError(password);
-            } else if (password.length < 8) {
-                return null;
+                return inputError('name');
+            } else if (
+                    !email ||
+                    typeof( email )!== 'string' ||
+                    email.indexOf('@', '.') === -1
+                ){
+                return inputError('email');
+            } else if (
+                    !password ||
+                    typeof(password) !== 'string' ||
+                    (password.length < 8)
+                ) {
+                return inputError('password');
             }
 
             return $http({
@@ -82,9 +88,9 @@
          */
         function login(email, password) {
             if (!email) {
-                return inputError(email);
+                return inputError('email');
             } else if (!password) {
-                return inputError(password);
+                return inputError('password');
             }
 
             return $http({
