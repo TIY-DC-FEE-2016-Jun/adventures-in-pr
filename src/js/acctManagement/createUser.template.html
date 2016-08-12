@@ -4,7 +4,8 @@
     <form
         novalidate
         name='createUser'
-        ng-submit='createUserCtrl.newAuthor()'>
+        ng-submit='createUser.$valid && createUserCtrl.newAuthor()'
+        ng-hide='createUserCtrl.message'>
         <input
             type='text'
             name='name'
@@ -26,6 +27,8 @@
         <input type='submit' value='Create Author'>
     </form>
 
-    <p class='new-author-msg alert alert-warning' ng-show='createUserCtrl.message'>{{createUser.message}}</p>
+    <p class='new-author-msg alert alert-warning' ng-show='createUserCtrl.message'>
+        {{createUserCtrl.message}}
+    </p>
 
 </section>

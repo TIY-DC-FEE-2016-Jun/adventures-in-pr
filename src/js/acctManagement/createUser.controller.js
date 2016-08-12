@@ -23,7 +23,8 @@
             )
             .then(function(data) {
                 console.log('new author', data);
-                that.message = 'Success! You\'ve create a new author.';
+                var name = data.data.name;
+                that.message = 'Success! You\'ve made ' + name + ' an author.';
             })
             .catch(function(err) {
                 console.log('unable to create new user', err.status);
