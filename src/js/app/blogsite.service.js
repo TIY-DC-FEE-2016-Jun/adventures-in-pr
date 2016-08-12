@@ -46,17 +46,15 @@
          * @return {void}
          */
         function init() {
-            var loggedInUser = null;
-
             try {
-                loggedInUser = JSON.parse(localStorage.getItem('currentUser'));
+                currentUser = JSON.parse(localStorage.getItem('currentUser'));
             } catch(err) {
                 //does not matter if loggedInUser does not exist or is invalid
                 //because user will just log in with form
             }
 
-            if (loggedInUser) {
-                apiToken = loggedInUser.userToken;
+            if (currentUser) {
+                apiToken = currentUser.userToken;
             }
         }
 
@@ -124,7 +122,8 @@
                 localStorage
                     .setItem('currentUser', angular.toJson({
                         userToken: apiToken,
-                        userEmail: email
+                        userEmail: email,
+                        userId: currentUser.userId
                     }));
                 return currentUser;
             });
