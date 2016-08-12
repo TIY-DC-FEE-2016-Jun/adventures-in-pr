@@ -9,6 +9,14 @@
     function CreatePostController(blogsite) {
         var that = this;
         this.categories = [];
+        this.blogPost = {};
+        this.createPost = createPost;
+
+        function createPost(blogPost) {
+            console.log(blogPost);
+            
+            that.blogPost = {};
+        }
 
         blogsite.getAllCategories()
             .then(function(data) {
