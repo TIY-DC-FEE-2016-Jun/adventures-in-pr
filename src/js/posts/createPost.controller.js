@@ -11,6 +11,13 @@
         this.categories = [];
         this.blogPost = {};
         this.createPost = createPost;
+        this.currentAuthor = null;
+
+
+        blogsite.getAuthor()
+            .then(function(author) {
+                that.currentAuthor = author;
+            });
 
         /**
          * Sends a blogPost to the service submitBlogPost and then resets
