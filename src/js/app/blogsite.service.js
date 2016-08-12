@@ -20,9 +20,11 @@
             logOut: logOut
         };
 
-
-
-
+        /**
+         * If user has logged in previously, this function will retrieve
+         * user data from local storage and save the token.
+         * @return {void} 
+         */
         function init() {
             var loggedInUser = null;
 
