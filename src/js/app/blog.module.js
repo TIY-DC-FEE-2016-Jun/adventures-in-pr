@@ -35,7 +35,7 @@
                 url: '/create-user',
                 templateUrl: '/js/acctManagement/createUser.template.html',
                 controller: 'CreateUserController',
-                controllerAs: 'createUser',
+                controllerAs: 'createUserCtrl',
                 secure: true
             })
             .state('login', {
