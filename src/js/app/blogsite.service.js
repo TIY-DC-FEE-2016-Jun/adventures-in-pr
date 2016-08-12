@@ -48,8 +48,12 @@
          * @return {Promise}         XMLHttpRequest object that implements promise methods
          */
         function createUser(name, email, password) {
-            if (!name || !email || !password) {
-                return null;
+            if (!name) {
+                inputError(name);
+            } else if (!email){
+                inputError(email);
+            } else if (!password) {
+                inputError(password);
             } else if (password.length < 8) {
                 return null;
             }
@@ -69,7 +73,7 @@
         }
 
         /**
-         * Log in to blog site and store user info in local storage. 
+         * Log in to blog site and store user info in local storage.
          * @param  {String} email    Email of user
          * @param  {String} password Password of user
          * @return {Promise}         XMLHttpRequest object that can implement
@@ -77,9 +81,9 @@
          */
         function login(email, password) {
             if (!email) {
-                loginError(email);
+                inputError(email);
             } else if (!password) {
-                loginError(password);
+                inputError(password);
             }
 
             return $http({
@@ -129,7 +133,7 @@
          * @return {Promise}      A deferred XMLHttpRequest
          *                        object with an error status of 401
          */
-        function loginError(field) {
+        function inputError(field) {
             var err = new Error('You need a ' + field + ' to login!');
                 err.status = 401;
                 return $q.reject(err);

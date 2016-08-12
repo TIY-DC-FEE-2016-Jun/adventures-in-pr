@@ -4,26 +4,28 @@
     <form
         novalidate
         name='createUser'
-        ng-submit='createUser.$valid && createUser.newUser()'>
+        ng-submit='createUserCtrl.newAuthor()'>
         <input
             type='text'
             name='name'
-            ng-model='createUser.userInfo.name'
+            ng-model='createUserCtrl.userInfo.name'
             placeholder='Jane Doe'
             required>
         <input
             type='text'
             name='email'
-            ng-model='createUser.userInfo.email'
+            ng-model='createUserCtrl.userInfo.email'
             placeholder='example@email.com'
             required>
         <input
             type='password'
             name='password'
-            ng-model='createUser.userInfo.password'
+            ng-model='createUserCtrl.userInfo.password'
             placeholder='password'
             required>
         <input type='submit' value='Create Author'>
-    </form>    
+    </form>
+
+    <p class='new-author-msg alert alert-warning' ng-show='createUserCtrl.message'>{{createUser.message}}</p>
 
 </section>
