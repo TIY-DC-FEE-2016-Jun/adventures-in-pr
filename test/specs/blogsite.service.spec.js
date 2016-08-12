@@ -63,6 +63,10 @@
             $httpBackend.flush();
         });
 
+        test('getAuthor function is able to get author', function() {
+
+        });
+
         test('submitBlogPost able to add post', function() {
 
         });
