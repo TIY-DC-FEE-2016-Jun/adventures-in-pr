@@ -82,7 +82,7 @@ module.exports = function(grunt) {
             },
             html: {
                 files: ['src/**/*.html'],
-                tasks: ['copy:html']
+                tasks: ['copy:html', 'copy:templates']
             }
         },
 
