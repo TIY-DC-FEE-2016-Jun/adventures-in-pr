@@ -165,7 +165,7 @@
          */
         function submitBlogPost(blogPost) {
             if (!blogPost) {
-                console.log('no blog post, unable cannot post anything');
+                return $q.reject(new Error('blogpost is empty'));
             }
             return $http({
                 method: 'post',
@@ -176,8 +176,8 @@
                 },
                 data: angular.toJson(blogPost)
             })
-            .then(function(data) {
-                console.log(data);
+            .then(function(response) {
+                return response.data;
             });
         }
 
