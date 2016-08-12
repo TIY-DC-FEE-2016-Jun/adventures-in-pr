@@ -67,13 +67,19 @@
          */
         function createUser(name, email, password) {
             if (!name) {
-                inputError(name);
-            } else if (!email){
-                inputError(email);
-            } else if (!password) {
-                inputError(password);
-            } else if (password.length < 8) {
-                return null;
+                return inputError('name');
+            } else if (
+                    !email ||
+                    typeof( email )!== 'string' ||
+                    email.indexOf('@', '.') === -1
+                ){
+                return inputError('email');
+            } else if (
+                    !password ||
+                    typeof(password) !== 'string' ||
+                    (password.length < 8)
+                ) {
+                return inputError('password');
             }
 
             return $http({
@@ -99,9 +105,9 @@
          */
         function login(email, password) {
             if (!email) {
-                inputError(email);
+                return inputError('email');
             } else if (!password) {
-                inputError(password);
+                return inputError('password');
             }
 
             return $http({
@@ -156,8 +162,8 @@
          */
         function inputError(field) {
             var err = new Error('You need a ' + field + ' to login!');
-                err.status = 401;
-                return $q.reject(err);
+            err.status = '401';
+            return $q.reject(err);
         }
 
         /**
