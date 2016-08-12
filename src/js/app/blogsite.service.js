@@ -106,7 +106,7 @@
 
         /**
          * Sends an http request to retrieve all categories that exists
-         * @return    {Object}    an XHR object that can implement promises
+         * @return    {Promise}    an XHR object that can implement promises
          */
         function getAllCategories() {
             return $http({
