@@ -23,7 +23,7 @@
         /**
          * If user has logged in previously, this function will retrieve
          * user data from local storage and save the token.
-         * @return {void} 
+         * @return {void}
          */
         function init() {
             var loggedInUser = null;
@@ -45,7 +45,7 @@
          * @param  {String} name     Name of new user
          * @param  {String} email    Email of new user
          * @param  {String} password Password with 1 special char and min 8 char long
-         * @return {Promise}         An XmlHttpRequest object that implements promise methods
+         * @return {Promise}         XmlHttpRequest object that implements promise methods
          */
         function createUser(name, email, password) {
             if (!name || !email || !password) {
