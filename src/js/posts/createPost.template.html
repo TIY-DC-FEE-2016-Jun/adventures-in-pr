@@ -1,19 +1,19 @@
 <section class='create-post'>
     <h3>Create a New Post</h3>
-    <form>
+    <form name='createPost' ng-submit='createPost.$valid && cpCtrl.createPost(cpCtrl.blogPost)' novalidate>
         <div>
             <label for='blogTitle'>Title</label>
-            <input id='blogTitle' type='text' name='title'>
+            <input id='blogTitle' type='text' name='title' ng-model='cpCtrl.blogPost.title' required>
         </div>
         <div>
             <label for='blogContent'>Content</label>
-            <textarea id='blogContent' type='text' name='content'></textarea>
+            <textarea id='blogContent' type='text' name='content' ng-model='cpCtrl.blogPost.content' required></textarea>
         </div>
         <div>
             <label for='blogCategory'>Category</label>
-            <select id='blogCategory' name='selectCategory'>
+            <select id='blogCategory' name='selectCategory' ng-model='cpCtrl.blogPost.categoryId' required>
                 <option value='' selected>Select Category</option>
-                <option ng-repeat='category in cpCtrl.categories' value='{{category.name}}'>
+                <option ng-repeat='category in cpCtrl.categories' value='{{category.id}}'>
                     {{category.name}}
                 </option>
             </select>

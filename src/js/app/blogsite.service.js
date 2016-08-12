@@ -14,10 +14,11 @@
 
         return {
             createUser: createUser,
-            getAllCategories: getAllCategories,
             login: login,
             isLoggedIn: isLoggedIn,
-            logOut: logOut
+            logOut: logOut,
+            getAllCategories: getAllCategories,
+            submitBlogPost: submitBlogPost
         };
 
         /**
@@ -69,7 +70,7 @@
         }
 
         /**
-         * Log in to blog site and store user info in local storage. 
+         * Log in to blog site and store user info in local storage.
          * @param  {String} email    Email of user
          * @param  {String} password Password of user
          * @return {Promise}         XMLHttpRequest object that can implement
@@ -107,35 +108,6 @@
         }
 
         /**
-         * Sends an http request to retrieve all categories that exists
-         * @return    {Promise}    an XHR object that can implement promises
-         */
-        function getAllCategories() {
-            return $http({
-                method: 'get',
-                url: 'https://tiy-blog-api.herokuapp.com/api/Categories',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(function(response) {
-                return response.data;
-            });
-        }
-
-        /**
-         * Return an error if login fails
-         * @param  {String} field The invalid input
-         * @return {Promise}      A deferred XMLHttpRequest
-         *                        object with an error status of 401
-         */
-        function loginError(field) {
-            var err = new Error('You need a ' + field + ' to login!');
-                err.status = 401;
-                return $q.reject(err);
-        }
-
-        /**
          * Is the user logged in or not
          * @return {Boolean}    If apiToken exists, then fn will return true.
          */
@@ -153,7 +125,58 @@
             currentUser = null;
             localStorage.removeItem('currentUser');
         }
-    }
 
+        /**
+         * Return an error if login fails
+         * @param  {String} field The invalid input
+         * @return {Promise}      A deferred XMLHttpRequest
+         *                        object with an error status of 401
+         */
+        function loginError(field) {
+            var err = new Error('You need a ' + field + ' to login!');
+                err.status = 401;
+                return $q.reject(err);
+        }
+
+        /**
+         * Sends an http request to retrieve all categories that exists
+         * @return    {Promise}    an XHR object that can implement promise methods
+         */
+        function getAllCategories() {
+            return $http({
+                method: 'get',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Categories',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+                return response.data;
+            });
+        }
+
+        /**
+         * Sends an http request post a created blogpost
+         * @return    {Promise}    an XHR object that can implement promise methods
+         */
+        function submitBlogPost(blogPost) {
+            if (!blogPost) {
+                console.log('no blog post, unable cannot post anything');
+            }
+            return $http({
+                method: 'post',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Posts',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiToken
+                },
+                data: angular.toJson(blogPost)
+            })
+            .then(function(data) {
+                console.log(data);
+            });
+        }
+
+    }
 
 })();
