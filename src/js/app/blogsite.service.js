@@ -21,7 +21,8 @@
             getAllCategories: getAllCategories,
             getCategory: getCategory,
             submitBlogPost: submitBlogPost,
-            getAllBlogs: getAllBlogs
+            getAllBlogs: getAllBlogs,
+            deleteBlogPost: deleteBlogPost
         };
 
         /**
@@ -202,7 +203,6 @@
                 }
             })
             .then(function(response) {
-                console.log(response);
                 return response.data.name;
             });
         }
@@ -247,6 +247,29 @@
                 return response.data;
             });
         }
+
+        /**
+         * [deleteBlogPost description]
+         * @param  {[type]} postId [description]
+         * @return {[type]}        [description]
+         */
+        function deleteBlogPost(postId) {
+            return $http({
+                method: 'delete',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Posts/' + postId,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiToken
+                }
+            })
+            .then(function(response) {
+                console.log(response);
+            });
+        }
+
+
+
+
     }
 
 })();
