@@ -19,7 +19,8 @@
             isLoggedIn: isLoggedIn,
             logOut: logOut,
             getAllCategories: getAllCategories,
-            submitBlogPost: submitBlogPost
+            submitBlogPost: submitBlogPost,
+            getAllBlogs: getAllBlogs
         };
 
         /**
@@ -206,6 +207,22 @@
             });
         }
 
+        /**
+         * Retrieves all blog posts that exist in database
+         * @return {Promise}    an XHR object that can implement promise methods
+         */
+        function getAllBlogs() {
+            return $http({
+                method: 'get',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Posts',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+                return response.data;
+            });
+        }
     }
 
 })();
