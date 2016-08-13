@@ -19,6 +19,7 @@
             isLoggedIn: isLoggedIn,
             logOut: logOut,
             getAllCategories: getAllCategories,
+            getCategory: getCategory,
             submitBlogPost: submitBlogPost,
             getAllBlogs: getAllBlogs
         };
@@ -185,6 +186,28 @@
         }
 
         /**
+         * Retrieves a category name from the given categoryId
+         * @param  {String}     categoryId   the given category id
+         * @return {String}                  category name
+         */
+        function getCategory(categoryId) {
+            if(!categoryId) {
+                return $q.reject(new Error('can\'t get category without category id'));
+            }
+            return $http({
+                method: 'get',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Categories/' + categoryId,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+                console.log(response);
+                return response.data.name;
+            });
+        }
+
+        /**
          * Sends an http request post a created blogpost
          * @return    {Promise}    an XHR object that can implement promise methods
          */
@@ -220,6 +243,7 @@
                 }
             })
             .then(function(response) {
+                console.log(response);
                 return response.data;
             });
         }
