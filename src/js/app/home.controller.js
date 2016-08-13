@@ -7,34 +7,20 @@
     HomeController.$inject = ['blogsite'];
 
     function HomeController(blogsite) {
+
         var that = this;
         this.allBlogs = [];
 
         blogsite.getAllBlogs()
             .then(function(blogs) {
                 console.log(blogs);
-                that.allBlogs = getBlogCategory(blogs);
+                that.allBlogs = blogs;
             });
 
 
-        /**
-         * Sends the categoryId for eachBlog into the getCategory method on the service
-         * @return  {Array}    updated each blog in array to include the respective category name
-         */
-        function getBlogCategory(blogs) {
-            if(!blogs || blogs === null) {
-                return;
-            }
-            blogs.forEach(function(blog) {
-                blogsite.getCategory(blog.categoryId)
-                    .then(function(categoryname) {
-                        blog.category = categoryname;
-                    });
-            });
-            return blogs;
-        }
 
     }
+
 
 
 })();
