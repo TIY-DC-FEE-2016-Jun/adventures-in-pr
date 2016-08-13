@@ -19,7 +19,7 @@
 
         /**
          * Sends the categoryId for eachBlog into the getCategory method on the service
-         * @return  {String}     the category name
+         * @return  {Array}    updated each blog in array to include the respective category name
          */
         function getBlogCategory(blogs) {
             if(!blogs || blogs === null) {
