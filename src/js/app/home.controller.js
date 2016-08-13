@@ -7,7 +7,7 @@
     HomeController.$inject = ['blogsite'];
 
     function HomeController(blogsite) {
-
+        
     }
 
 
