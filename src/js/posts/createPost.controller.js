@@ -27,6 +27,7 @@
          */
         function createPost(blogPost) {
             console.log(blogPost);
+            blogPost.author = that.currentAuthor;
             blogsite.submitBlogPost(blogPost);
             that.blogPost = {};
             $state.go('home');
