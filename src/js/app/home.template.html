@@ -1,14 +1,14 @@
 <section class='home'>
     <h3>Recent Posts</h3>
     <ul>
-        <li>
+        <li ng-repeat='blog in homeCtrl.allBlogs'>
             <header>
-                <h4></h4>
-                <cite></cite>
+                <h4>{{blog.title}}</h4>
+                <cite>{{blog.author}}</cite>
             </header>
-            <p></p>
+            <p>{{blog.content}}</p>
             <footer>
-                <p>Read Post</p>
+                <p>Read Post | {{blog.category}}</p>
             </footer>
         </li>
     </ul>

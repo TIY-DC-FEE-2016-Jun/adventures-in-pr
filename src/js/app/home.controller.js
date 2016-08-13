@@ -8,13 +8,31 @@
 
     function HomeController(blogsite) {
         var that = this;
-        this.allBlogs = null;
+        this.allBlogs = [];
 
         blogsite.getAllBlogs()
             .then(function(blogs) {
-                that.allBlogs = blogs;
+                console.log(blogs);
+                that.allBlogs = getBlogCategory(blogs);
             });
 
+
+        /**
+         * Sends the categoryId for eachBlog into the getCategory method on the service
+         * @return  {String}     the category name
+         */
+        function getBlogCategory(blogs) {
+            if(!blogs || blogs === null) {
+                return;
+            }
+            blogs.forEach(function(blog) {
+                blogsite.getCategory(blog.categoryId)
+                    .then(function(categoryname) {
+                        blog.category = categoryname;
+                    });
+            });
+            return blogs;
+        }
 
     }
 
