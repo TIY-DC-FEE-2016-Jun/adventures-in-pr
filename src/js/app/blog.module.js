@@ -16,7 +16,10 @@
                 url: '/',
                 templateUrl: '/js/app/home.template.html',
                 controller: 'HomeController',
-                controllerAs: 'homeCtrl'
+                controllerAs: 'homeCtrl',
+                params: {
+                    posts: null
+                }
             })
             .state('about', {
                 url: '/about',
