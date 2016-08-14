@@ -4,15 +4,17 @@
     angular.module('blog')
         .controller('CategoriesController', CategoriesController);
 
-    CategoriesController.$inject = ['blogsite'];
+    CategoriesController.$inject = ['$stateParams', 'blogsite'];
 
-    function CategoriesController(blogsite) {
+    function CategoriesController($stateParams, blogsite) {
         var that = this;
         this.allBlogs = [];
-
-        blogsite.getAllBlogs()
+        this.categoryId = $stateParams.categoryId;
+        console.log('catCtrl', this.categoryId);
+        blogsite.getCategory(this.categoryId)
             .then(function(blogs) {
-                that.allBlogs = blogs;
+                console.log('blog in getPostsInCategory', blogs.posts);
+                that.allBlogs = blogs.posts;
             });
     }
 
