@@ -1,12 +1,12 @@
 <section class='home'>
     <h3>Recent Posts</h3>
     <ul>
-        <li ng-repeat='blog in homeCtrl.allBlogs'>
+        <li ng-cloak ng-repeat='blog in homeCtrl.allBlogs'>
             <header>
                 <h4>{{blog.title}}</h4>
                 <cite>by {{blog.authorName}}</cite>
             </header>
-            <p>{{blog.content}}</p>
+            <p class='blogContent'>{{blog.content}}</p>
             <footer>
                 <p>Read Post | {{blog.category}}</p>
             </footer>
