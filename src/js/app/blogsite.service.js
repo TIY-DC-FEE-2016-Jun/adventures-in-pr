@@ -287,7 +287,7 @@
                         blog.authorName = author.name;
                     });
             });
-            console.log(blogs);
+            console.log('updateBlogs function', blogs);
             return blogs;
         }
 
