@@ -1,8 +1,8 @@
 <section class='category'>
     <h3 class='viewTitle'>Posts in [Category Name]</h3>
     <ul>
-        <li>
-            <a></a>
+        <li ng-repeat='blog in catCtrl.allBlogs'>
+            <a>{{blog.title}}</a>
             <button>Delete</button>
         </li>
     </ul>

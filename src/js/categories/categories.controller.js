@@ -6,8 +6,14 @@
 
     CategoriesController.$inject = ['blogsite'];
 
-    function CategoriesController() {
+    function CategoriesController(blogsite) {
+        var that = this;
+        this.allBlogs = [];
 
+        blogsite.getAllBlogs()
+            .then(function(blogs) {
+                that.allBlogs = blogs;
+            });
     }
 
 
