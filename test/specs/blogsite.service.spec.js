@@ -250,7 +250,6 @@
             result
                 .then(function(categories) {
                     assert.isArray(categories, 'the data in then method is an array');
-                    assert.isObject(categories[0], 'inside categories is an object');
                     done();
                 })
                 .catch(function(err) {
