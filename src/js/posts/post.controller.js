@@ -19,10 +19,6 @@
                 that.postData = response.data;
                 console.log(that.postData);
             });
-
-
-
-
     }
 
 })();
