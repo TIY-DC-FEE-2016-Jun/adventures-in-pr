@@ -4,7 +4,7 @@
 
     <ul class='allBlogsPreview'>
 
-        <li class='blogPreview' ng-cloak ng-repeat='blog in homeCtrl.allBlogs | limitTo: 5 | orderBy: date'>
+        <li class='blogPreview' ng-cloak ng-repeat='blog in homeCtrl.allBlogs | orderBy: "-date" | limitTo: 5'>
             <header ng-click='homeCtrl.goToPost( blog.authorName, blog.title, blog.id )'>
                 <h4>{{blog.title}}</h4>
                 <cite>by {{blog.authorName}}</cite>
