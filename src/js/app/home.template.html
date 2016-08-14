@@ -2,7 +2,7 @@
     <h3>Recent Posts</h3>
     <ul>
         <li ng-repeat='blog in homeCtrl.allBlogs'>
-            <header>
+            <header ng-click='homeCtrl.goToPost({{blog.authorName}}, {{blog.title}})'>
                 <h4>{{blog.title}}</h4>
                 <cite>by {{blog.authorName}}</cite>
             </header>
