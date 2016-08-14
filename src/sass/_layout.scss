@@ -7,11 +7,7 @@ aside {
 main {
     float: left;
     width: $mainViewWidth;
-    margin: 0 0 0 $mainViewMargin;
+    margin: 0 0 $mainMarginBottom $mainViewMargin;
     padding-right: $mainViewMargin;
     border-right: $sideBarBorderWidth solid $sideBarBorderColor;
-}
-
-.pageNav {
-    margin: 0;
 }
