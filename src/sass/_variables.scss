@@ -17,14 +17,7 @@ $blogBorderColor: #ffffff;
 
 $homeBttnsMargin: 30%;
 $homeBottomBttnMargin: 20px;
-
-//Standard Variables
-$blockRadius: 5px;
-$mainViewWidth: 60%;
-$mainViewMargin: 10%;
-$mainMarginBottom: 50px;
-$sidebarWidth: 20%;
-$sideBarMarginRight: 8%;
+$timeColor: #9d9d9d;
 
 $postArticleWidth: 100%;
 $postHeaderBottomBorder: 1px solid #b1b2b6;
@@ -33,5 +26,16 @@ $postHeaderPaddingBottom: 1%;
 $postCategoryPaddingTop: 2%;
 $postContentPaddingTop: 7%;
 $postContentPaddingBottom: 4%;
+
+//Standard Variables
+$themeFontColor: #77b9e9;
+$titleMarginVertical: 1em;
+$titleBorder: #9d9d9d;
+$blockRadius: 5px;
+$mainViewWidth: 60%;
+$mainViewMargin: 10%;
+$mainMarginBottom: 50px;
+$sidebarWidth: 20%;
+$sideBarMarginRight: 8%;
 $postFooterBorderTop: 1px solid $sideBarBorderColor;
 $postFooterFontColor: #adaeb4;
