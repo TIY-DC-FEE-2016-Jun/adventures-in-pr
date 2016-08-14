@@ -41,7 +41,6 @@
                 templateUrl: '/js/posts/post.template.html',
                 controller: 'PostController',
                 controllerAs: 'postCtrl'
-
             })
             .state('createUser', {
                 url: '/create-user',
