@@ -13,32 +13,19 @@
         init();
 
         return {
+            getLoggedInAuthor: getLoggedInAuthor,
             getAuthor: getAuthor,
             createUser: createUser,
             login: login,
             isLoggedIn: isLoggedIn,
             logOut: logOut,
             getAllCategories: getAllCategories,
-            submitBlogPost: submitBlogPost
+            getCategory: getCategory,
+            submitBlogPost: submitBlogPost,
+            getAllBlogs: getAllBlogs,
+            deleteBlogPost: deleteBlogPost
         };
 
-        /**
-         * Returns the currentAuthor
-         * @return  {Object}     the author's information for the given id
-         */
-        function getAuthor() {
-            return $http({
-                url: 'https://tiy-blog-api.herokuapp.com/api/Authors/' + currentUser.userId,
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': apiToken
-                },
-            })
-            .then(function(response) {
-                return response.data;
-            });
-        }
 
         /**
          * If user has logged in previously, this function will retrieve
@@ -59,11 +46,48 @@
         }
 
         /**
+         * Returns the currentAuthor
+         * @return  {Object}     the currentUser's info
+         */
+        function getLoggedInAuthor() {
+            return $http({
+                url: 'https://tiy-blog-api.herokuapp.com/api/Authors/' + currentUser.userId,
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiToken
+                },
+            })
+            .then(function(response) {
+                return response.data;
+            });
+        }
+
+        /**
+         * Returns the author of the given id
+         * @param  {String}     authorId    Unique string to identify author
+         * @return {Object}                 Author's information for the given id
+         */
+        function getAuthor(authorId) {
+            return $http({
+                url: 'https://tiy-blog-api.herokuapp.com/api/Authors/' + authorId,
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiToken
+                },
+            })
+            .then(function(response) {
+                return response.data;
+            });
+        }
+
+        /**
          * Logged in user can create new user
-         * @param  {String} name     Name of new user
-         * @param  {String} email    Email of new user
-         * @param  {String} password Password with 1 special char and min 8 char long
-         * @return {Promise}         XMLHttpRequest object that implements promise methods
+         * @param  {String}  name     Name of new user
+         * @param  {String}  email    Email of new user
+         * @param  {String}  password Password with 1 special char and min 8 char long
+         * @return {Promise}          XMLHttpRequest object that implements promise methods
          */
         function createUser(name, email, password) {
             if (!name) {
@@ -184,6 +208,27 @@
         }
 
         /**
+         * Retrieves a category name from the given categoryId
+         * @param  {String}     categoryId   the given category id
+         * @return {String}                  category name
+         */
+        function getCategory(categoryId) {
+            if(!categoryId) {
+                return $q.reject(new Error('can\'t get category without category id'));
+            }
+            return $http({
+                method: 'get',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Categories/' + categoryId,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+                return response.data.name;
+            });
+        }
+
+        /**
          * Sends an http request post a created blogpost
          * @return    {Promise}    an XHR object that can implement promise methods
          */
@@ -205,6 +250,66 @@
                 return response.data;
             });
         }
+
+        /**
+         * Retrieves all blog posts that exist in database
+         * @return {Promise}    an XHR object that can implement promise methods
+         */
+        function getAllBlogs() {
+            return $http({
+                method: 'get',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Posts',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+                console.log(response);
+                return updateBlogs(response.data);
+            });
+        }
+
+        /**
+         * Updates all individual blogs with another property inside of a blogs Array
+         * @return {Array}  updated each blog in array to include category and author name
+         */
+        function updateBlogs(blogs) {
+            if(!blogs || !(blogs instanceof Array)) {
+                return;
+            }
+            blogs.forEach(function(blog) {
+                getCategory(blog.categoryId)
+                    .then(function(categoryname) {
+                        blog.category = categoryname;
+                    });
+                getAuthor(blog.authorId)
+                    .then(function(author) {
+                        blog.authorName = author.name;
+                    });
+            });
+            console.log(blogs);
+            return blogs;
+        }
+
+        /**
+         * deletes selected post by calling the api's delete method with the given id
+         * @param  {[type]} postId [description]
+         * @return {[type]}        [description]
+         */
+        function deleteBlogPost(postId) {
+            if (!postId) {
+                return $q.reject(new Error('can\'t delete a post without it\'s id'));
+            }
+            return $http({
+                method: 'delete',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Posts/' + postId,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiToken
+                }
+            });
+        }
+
 
     }
 
