@@ -1,15 +1,26 @@
 <section class='home'>
+
     <h3 class='viewTitle'>Recent Posts</h3>
+
     <ul class='allBlogsPreview'>
+
         <li class='blogPreview' ng-cloak ng-repeat='blog in homeCtrl.allBlogs'>
-            <header>
-                <h4>{{blog.title}}</h4>
+
+            <header ng-click='homeCtrl.goToPost( blog.authorName, blog.title, blog.id )'>
+
+                <h4>{{blog.title}}</h4>    
                 <cite>by {{blog.authorName}}</cite>
+
             </header>
+
             <p class='blogContent'>{{blog.content}}</p>
+
             <footer>
                 <p>Read Post | {{blog.category}}</p>
             </footer>
+
         </li>
+
     </ul>
+
 </section>

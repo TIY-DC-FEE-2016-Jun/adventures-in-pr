@@ -36,6 +36,15 @@
                 url: '/recent',
                 templateUrl: '/js/posts/recentPosts.template.html'
             })
+            .state('post', {
+                url:'/post/:authorName/:postTitle',
+                templateUrl: '/js/posts/post.template.html',
+                controller: 'PostController',
+                controllerAs: 'postCtrl',
+                params: {
+                    postId: null
+                }
+            })
             .state('createUser', {
                 url: '/create-user',
                 templateUrl: '/js/acctManagement/createUser.template.html',
