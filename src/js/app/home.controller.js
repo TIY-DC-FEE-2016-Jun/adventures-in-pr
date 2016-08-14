@@ -14,6 +14,9 @@
         blogsite.getAllBlogs()
             .then(function(blogs) {
                 console.log(blogs);
+                blogs.forEach(function(blog) {
+                    blog.content = blog.content.substring(0, blog.content.indexOf('.')+1) ;
+                });
                 that.allBlogs = blogs;
             });
 
