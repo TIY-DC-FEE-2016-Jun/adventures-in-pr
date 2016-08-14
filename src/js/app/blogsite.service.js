@@ -23,7 +23,8 @@
             getCategory: getCategory,
             submitBlogPost: submitBlogPost,
             getAllBlogs: getAllBlogs,
-            deleteBlogPost: deleteBlogPost
+            deleteBlogPost: deleteBlogPost,
+            getPost: getPost
         };
 
 
@@ -307,6 +308,27 @@
                     'Content-Type': 'application/json',
                     'Authorization': apiToken
                 }
+            });
+        }
+
+        /**
+         * Retrieve a single blog post
+         * @param  {String} postId Id of selected blog post
+         * @return {Promise}       XMLHttpRequest object that implements promise methods
+         */
+        function getPost(postId) {
+            if(!postId) {
+                return $q.reject(new Error('can\'t retrieve a blog post without post id'));
+            }
+            return $http({
+                method: 'get',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Posts/' + postId,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response) {
+                return response.data;
             });
         }
 
