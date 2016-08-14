@@ -7,9 +7,11 @@
     HomeController.$inject = ['$state', 'blogsite'];
 
     function HomeController($state, blogsite) {
-
         var that = this;
         this.allBlogs = [];
+        this.goToPost = function goToPost(author, title, id) {
+            $state.go('post', {'authorName': author, 'postTitle': title, 'postId': id});
+        };
 
         blogsite.getAllBlogs()
             .then(function(blogs) {
@@ -20,12 +22,7 @@
                 that.allBlogs = blogs;
             });
 
-        this.goToPost = function goToPost(author, title, id) {
-            $state.go('post', {'authorName': author, 'postTitle': title, 'postId': id});
-        };
-
     }
-
 
 
 })();
