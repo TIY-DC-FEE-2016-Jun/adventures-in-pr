@@ -47,6 +47,10 @@
     margin: 0 $homeBttnsMargin;
     margin-bottom: $homeBottomBttnMargin;
     text-align: center;
+    
+    .btn {
+        color: $themeFontColor;
+    }
 }
 
 .timestamp {
