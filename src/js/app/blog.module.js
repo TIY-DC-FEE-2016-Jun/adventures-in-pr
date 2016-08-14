@@ -37,7 +37,7 @@
                 templateUrl: '/js/posts/recentPosts.template.html'
             })
             .state('post', {
-                url:'/post',
+                url:'/post/:authorId/:postId',
                 templateUrl: '/js/posts/post.template.html',
                 controller: 'PostController',
                 controllerAs: 'postCtrl'
