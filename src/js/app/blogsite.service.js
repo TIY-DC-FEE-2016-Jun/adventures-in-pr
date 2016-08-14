@@ -326,13 +326,8 @@
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            })
-            .then(function(response) {
-                return response.data;
             });
         }
-
-
     }
 
 })();
