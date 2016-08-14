@@ -7,7 +7,7 @@
         <li class='blogPreview' ng-cloak ng-repeat='blog in homeCtrl.allBlogs | orderBy: "-date" | limitTo: 5'>
             <div class='timestamp'>
                 <time class='time'>{{blog.date | date: "h:mm a"}}</time>
-                <time class='date'>{{blog.date | date: "M/d/yy"}}</time>
+                <time class='date'>{{blog.date | date: "d/M/yy"}}</time>
             </div>
             <header ng-click='homeCtrl.goToPost( blog.authorName, blog.title, blog.id )'>
                 <h4>{{blog.title}}</h4>
