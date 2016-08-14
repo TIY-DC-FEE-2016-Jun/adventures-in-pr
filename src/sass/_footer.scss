@@ -4,6 +4,8 @@
 
     li {
         display: inline;
+        padding: 0 2em;
+        content: '|';
     }
     li a {
         color: $footerTxtColor;
