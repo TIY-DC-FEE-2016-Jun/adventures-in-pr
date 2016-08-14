@@ -4,11 +4,17 @@
     angular.module('blog')
         .controller('IndexController', IndexController);
 
-    IndexController.$inject = ['blogsite'];
+    IndexController.$inject = ['$state', 'blogsite'];
 
-    function IndexController(blogsite) {
+    function IndexController($state, blogsite) {
         var that = this;
         this.categories = [];
+        this.goToCategory = goToCategory;
+
+
+        function goToCategory(id) {
+            $state.go('category', {'categoryId': id});
+        }
 
         blogsite.getAllCategories()
             .then(function(data) {
