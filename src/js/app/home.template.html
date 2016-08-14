@@ -4,23 +4,20 @@
 
     <ul class='allBlogsPreview'>
 
-        <li class='blogPreview' ng-cloak ng-repeat='blog in homeCtrl.allBlogs'>
-
+        <li class='blogPreview' ng-cloak ng-repeat='blog in homeCtrl.allBlogs | limitTo: 5 | orderBy: date'>
             <header ng-click='homeCtrl.goToPost( blog.authorName, blog.title, blog.id )'>
-
-                <h4>{{blog.title}}</h4>    
+                <h4>{{blog.title}}</h4>
                 <cite>by {{blog.authorName}}</cite>
-
             </header>
-
             <p class='blogContent'>{{blog.content}}</p>
-
             <footer>
                 <p>Read Post | {{blog.category}}</p>
             </footer>
-
         </li>
-
     </ul>
+    <div class='old-new-bttns btn-group'>
+        <button class='btn btn-default'>Older</button>
+        <button class='btn btn-default'>Newer</button>
+    </div>
 
 </section>
