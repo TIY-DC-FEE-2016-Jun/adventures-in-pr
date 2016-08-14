@@ -1,7 +1,16 @@
 .footer {
     list-style: none;
+    float: left;
 
+    li {
+        display: inline;
+    }
     li a {
         color: $footerTxtColor;
     }
+}
+
+.copyright {
+    float: right;
+    color: $footerTxtColor;
 }
