@@ -325,6 +325,9 @@
                 url: 'https://tiy-blog-api.herokuapp.com/api/Posts/' + postId,
                 headers: {
                     'Content-Type': 'application/json'
+                },
+                params: {
+                    'filter': {'include': ['author','category']}
                 }
             });
         }
