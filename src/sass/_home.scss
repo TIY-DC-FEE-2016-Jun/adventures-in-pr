@@ -48,3 +48,20 @@
     margin-bottom: $homeBottomBttnMargin;
     text-align: center;
 }
+
+.timestamp {
+    position: relative;
+}
+.time {
+    position: absolute;
+    top: 0;
+    color: $timeColor;
+    left: -70px;
+}
+.date {
+    position: absolute;
+    top: 15px;
+    left: -70px;
+    font-weight: bold;
+    color: $themeFontColor;
+}

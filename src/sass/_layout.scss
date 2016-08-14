@@ -11,3 +11,8 @@ main {
     padding-right: $mainViewMargin;
     border-right: $sideBarBorderWidth solid $sideBarBorderColor;
 }
+
+.viewTitle {
+    margin: $titleMarginVertical 0;
+    border-bottom: 1px solid $titleBorder;
+}
