@@ -67,6 +67,10 @@
                 controller: 'CategoriesController',
                 controllerAs: 'catCtrl'
             })
+            .state('legal', {
+                url: '/legal',
+                templateUrl: '/js/app/legal.template.html'
+            })
             .state('404', {
                 url: '/404',
                 templateUrl: '/js/app/404.template.html'

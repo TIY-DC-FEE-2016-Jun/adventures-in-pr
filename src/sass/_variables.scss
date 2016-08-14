@@ -1,4 +1,11 @@
-$footerTxtColor: #ffffff;
+$footerTxtColor: #9d9d9d;
+
+$pageHeaderHeight: 150px;
+$pageHeaderColor: #ffffff;
+$pageHeaderShadow: #615e5f;
+$centeringHeaderPadding: 50px;
+
+$navShadow: #615e5f;
 
 $sideBarBorderColor: #77b9e9;
 $sideBarBorderWidth: 2px;
@@ -6,13 +13,11 @@ $sideBarBorderWidth: 2px;
 $blogBlockEvenColor: #313740;
 $blogBlockOddColor: #6f7173;
 $blogBlockTextColor: #ffffff;
+$blogBorderColor: #ffffff;
 
-
-//Standard Variables
-$blockRadius: 5px;
-$mainViewWidth: 60%;
-$mainViewMargin: 10%;
-$sidebarWidth: 20%;
+$homeBttnsMargin: 30%;
+$homeBottomBttnMargin: 20px;
+$timeColor: #9d9d9d;
 
 $postArticleWidth: 100%;
 $postHeaderBottomBorder: 1px solid #b1b2b6;
@@ -21,5 +26,16 @@ $postHeaderPaddingBottom: 1%;
 $postCategoryPaddingTop: 2%;
 $postContentPaddingTop: 7%;
 $postContentPaddingBottom: 4%;
+
+//Standard Variables
+$themeFontColor: #77b9e9;
+$titleMarginVertical: 1em;
+$titleBorder: #9d9d9d;
+$blockRadius: 5px;
+$mainViewWidth: 60%;
+$mainViewMargin: 10%;
+$mainMarginBottom: 50px;
+$sidebarWidth: 20%;
+$sideBarMarginRight: 8%;
 $postFooterBorderTop: 1px solid $sideBarBorderColor;
 $postFooterFontColor: #adaeb4;

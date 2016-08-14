@@ -259,7 +259,7 @@
         function getAllBlogs() {
             return $http({
                 method: 'get',
-                url: 'https://tiy-blog-api.herokuapp.com/api/Posts',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Posts/',
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -288,7 +288,7 @@
                         blog.authorName = author.name;
                     });
             });
-            console.log(blogs);
+            console.log('updateBlogs function', blogs);
             return blogs;
         }
 

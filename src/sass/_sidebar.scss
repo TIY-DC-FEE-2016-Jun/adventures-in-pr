@@ -1,4 +1,7 @@
 .sideBar {
     float: right;
-    border-left: $sideBarBorderWidth solid $sideBarBorderColor;
+
+    h3 {
+        color: $themeFontColor;
+    }
 }

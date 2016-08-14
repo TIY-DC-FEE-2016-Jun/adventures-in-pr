@@ -1,10 +1,30 @@
 .pageTitle {
     background: url(../img/cropped-notebook-coffee.jpg);
     background-size: cover;
-    background-position: center center;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    height: $pageHeaderHeight;
+    vertical-align: middle;
 
     h1, p {
         margin: 0;
         text-align: center;
+        color: $pageHeaderColor;
+        text-shadow: 1px 2px 3px $pageHeaderShadow;
     }
+    h1 {
+        padding-top: $centeringHeaderPadding;
+    }
+    p {
+        padding-bottom: $centeringHeaderPadding;
+    }
+}
+
+.pageNav {
+    box-shadow: 1px 2px 3px $navShadow;
+    margin: 0;
+}
+
+.navbar {
+    border-radius: 0;
 }

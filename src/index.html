@@ -17,7 +17,7 @@
             <p>A catalog of the adventures had by various members of the PR Pros Team.</p>
         </header>
 
-        <nav ng-controller='NavController as nav' class='navbar navbar-inverse'>
+        <nav class='pageNav navbar navbar-inverse' ng-controller='NavController as nav'>
             <ul class='nav navbar-nav'>
                 <li><a ui-sref='home'>Home</a></li>
                 <li><a ui-sref='about'>About Us</a></li>
@@ -52,10 +52,9 @@
                 <li><a ui-sref='about'>About Us</a></li>
                 <li ng-hide='nav.loggedIn()'><a ui-sref='login'>Login</a></li>
                 <li ng-show='nav.loggedIn()'><a ui-sref='createUser'>Create User</a></li>
-                <li><a>Legal</a></li>
-                <!--ask client-->
+                <li><a ui-sref='legal'>Legal</a></li>
             </ul>
-            <p class='navbar-text navbar-right'>Copyright PR Pros 2016.</p>
+            <p class='copyright'>&copy; PR Pros 2016</p>
         </footer>
 
         <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'></script>

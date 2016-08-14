@@ -1,10 +1,18 @@
 aside {
-    float: right;
     width: $sidebarWidth;
+    text-align: left;
+    margin-right: $sideBarMarginRight;
 }
 
 main {
     float: left;
     width: $mainViewWidth;
-    margin: 0 $mainViewMargin;
+    margin: 0 0 $mainMarginBottom $mainViewMargin;
+    padding-right: $mainViewMargin;
+    border-right: $sideBarBorderWidth solid $sideBarBorderColor;
+}
+
+.viewTitle {
+    margin: $titleMarginVertical 0;
+    border-bottom: 1px solid $titleBorder;
 }
