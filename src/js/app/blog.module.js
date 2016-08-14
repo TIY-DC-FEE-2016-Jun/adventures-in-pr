@@ -40,7 +40,10 @@
                 url:'/post/:authorName/:postTitle',
                 templateUrl: '/js/posts/post.template.html',
                 controller: 'PostController',
-                controllerAs: 'postCtrl'
+                controllerAs: 'postCtrl',
+                params: {
+                    postId: null
+                }
             })
             .state('createUser', {
                 url: '/create-user',
