@@ -17,8 +17,8 @@
                 that.allBlogs = blogs;
             });
 
-        this.goToPost = function goToPost(author, title) {
-            $state.go('post', {'authorName': author, 'postTitle': title}); 
+        this.goToPost = function goToPost(author, title, id) {
+            $state.go('post', {'authorName': author, 'postTitle': title, 'postId': id});
         };
 
     }
