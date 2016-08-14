@@ -1,0 +1,19 @@
+<article class='post'>
+    <header class='post-header'>
+        <h3>{{postCtrl.postData.title}}</h3>
+
+        <div>
+            {{postCtrl.postData.categoryId}}
+        </div>
+    </header>
+
+    <section class='post-content'>
+        {{postCtrl.postData.content}}
+    </section>
+
+    <footer class='post-footer'>
+        Posted at {{postCtrl.postData.date | date:'h:mma "on" dd/MM/yy'}}
+        by {{postCtrl.postData.authorId}}
+    </footer>
+
+</article>

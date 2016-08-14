@@ -1,0 +1,30 @@
+.post {
+    width: $postArticleWidth;
+    margin-left: $postMarginLeft;
+}
+
+.post-header {
+    border-bottom: $postHeaderBottomBorder;
+    padding-bottom: $postHeaderPaddingBottom;
+
+    h3 {
+        display: inline;
+    }
+
+    div {
+        display: inline;
+        float: right;
+        padding-top: $postCategoryPaddingTop;
+    }
+}
+
+.post-content {
+    padding-top: $postContentPaddingTop;
+    padding-bottom: $postContentPaddingBottom;
+}
+
+.post-footer {
+    border-top: $postFooterBorderTop;
+    color: $postFooterFontColor;
+    text-align: right;
+}
