@@ -1,0 +1,10 @@
+aside {
+    float: right;
+    width: $sidebarWidth;
+}
+
+main {
+    float: left;
+    width: $mainViewWidth;
+    margin: 0 $mainViewMargin;
+}

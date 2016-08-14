@@ -1,0 +1,35 @@
+.allBlogsPreview {
+    padding: 0;
+}
+
+.blogPreview {
+    list-style: none;
+    margin-right: 0;
+    color: $blogBlockTextColor;
+    border-radius: $blockRadius;
+    vertical-align: middle;
+
+    header h4 {
+        float: left;
+        margin: 0;
+    }
+
+    header cite {
+        float: right;
+    }
+
+    footer {
+        text-align: right;
+    }
+}
+
+.blogPreview:nth-child(even) {
+    background-color: $blogBlockEvenColor;
+}
+.blogPreview:nth-child(odd) {
+    background-color: $blogBlockOddColor;
+}
+
+.blogContent {
+    clear: left;
+}

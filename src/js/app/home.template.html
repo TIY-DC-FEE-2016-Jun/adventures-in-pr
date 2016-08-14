@@ -1,7 +1,7 @@
 <section class='home'>
-    <h3>Recent Posts</h3>
-    <ul>
-        <li ng-cloak ng-repeat='blog in homeCtrl.allBlogs'>
+    <h3 class='viewTitle'>Recent Posts</h3>
+    <ul class='allBlogsPreview'>
+        <li class='blogPreview' ng-cloak ng-repeat='blog in homeCtrl.allBlogs'>
             <header>
                 <h4>{{blog.title}}</h4>
                 <cite>by {{blog.authorName}}</cite>
