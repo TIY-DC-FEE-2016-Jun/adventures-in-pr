@@ -11,14 +11,18 @@
         this.allBlogs = [];
         this.categoryId = $stateParams.categoryId;
         this.categoryName = null;
+        this.delete = deletePost;
 
-        console.log('catCtrl', this.categoryId);
         blogsite.getCategory(this.categoryId)
             .then(function(blogs) {
                 console.log('blog in getPostsInCategory', blogs.posts);
                 that.allBlogs = blogs.posts;
                 that.categoryName = blogs.name;
             });
+
+        function deletePost() {
+            
+        }
     }
 
 
