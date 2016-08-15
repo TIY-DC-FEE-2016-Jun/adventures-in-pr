@@ -20,10 +20,16 @@
                     console.log('authenticated user', data);
                     $state.go('createPost');
                 })
-                .catch(function(err) {
-                    console.error('unable to authenticate', err.status);
-
-                    that.message = '401 Error - user/password combo does not exist'; 
+                .catch(function(response) {
+                    console.error('unable to authenticate', response.status);
+                    that.userInfo.password = '';
+                    if (response.status === 400) {
+                        that.message = response.message;
+                    } else if (response.data.error.status === 401) {
+                        that.message = 'Unable to login, please check your email and password!';
+                    } else {
+                        that.message = 'Oops! Something went wrong.';
+                    }
                 });
         };
     }
