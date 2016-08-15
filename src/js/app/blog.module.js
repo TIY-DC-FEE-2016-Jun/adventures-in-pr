@@ -38,7 +38,9 @@
                 controller: 'RecentPostsController',
                 controllerAs: 'recentCtrl',
                 params: {
-                    chosenMonth: null
+                    chosenMonth: null,
+                    allDates: null,
+                    dateIndex: null
                 }
             })
             .state('post', {
