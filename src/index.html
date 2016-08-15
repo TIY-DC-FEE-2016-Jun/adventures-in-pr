@@ -30,9 +30,9 @@
             <section>
                 <h3>Recent Posts</h3>
                 <ul>
-                    <li ui-sref='recentPosts'><a ng-click='index.goToMonth( index.currentMonth )'>{{index.currentMonth}}</li>
-                    <li ui-sref='recentPosts'><a>{{index.oneMonthAgo}}</li>
-                    <li ui-sref='recentPosts'><a>{{index.twoMonthsAgo}}</li>
+                    <li><a ng-click='index.goToMonth( index.getMonths[0] | date: "MMMM" )'>{{index.getMonths[0] | date: 'MMMM'}}</li>
+                    <li><a ng-click='index.goToMonth( index.getMonths[1] | date: "MMMM" )'>{{index.getMonths[1] | date: 'MMMM'}}</li>
+                    <li><a ng-click='index.goToMonth( index.getMonths[2] | date: "MMMM" )'>{{index.getMonths[2] | date: 'MMMM'}}</li>
                 </ul>
             </section>
             <section>
