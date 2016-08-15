@@ -8,18 +8,21 @@
         ng-submit='createUser.$valid && createUserCtrl.newAuthor()'
         ng-hide='createUserCtrl.message'>
         <input
+            class='form-control'
             type='text'
             name='name'
             ng-model='createUserCtrl.userInfo.name'
             placeholder='Jane Doe'
             required>
         <input
+            class='form-control'
             type='email'
             name='email'
             ng-model='createUserCtrl.userInfo.email'
             placeholder='example@email.com'
             required>
         <input
+            class='form-control'
             type='password'
             name='password'
             ng-model='createUserCtrl.userInfo.password'
