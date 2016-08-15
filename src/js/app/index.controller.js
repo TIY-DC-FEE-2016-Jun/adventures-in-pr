@@ -25,7 +25,15 @@
                 console.error(error);
             });
 
+        this.currentDate = Date.now();
 
+
+        this.getMonths = blogsite.getPastThreeMonths(this.currentDate);
+        console.log(this.getMonths);
+
+        this.goToMonth = function goToMonth(selMonth) {
+            $state.go('recentPosts', {'month': selMonth});
+        };
     }
 
 })();

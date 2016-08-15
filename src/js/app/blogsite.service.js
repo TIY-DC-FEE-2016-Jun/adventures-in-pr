@@ -25,7 +25,8 @@
             getAllBlogs: getAllBlogs,
             deleteBlogPost: deleteBlogPost,
             getPost: getPost,
-            getPostByDate: getPostByDate
+            getPostByDate: getPostByDate,
+            getPastThreeMonths: getPastThreeMonths
         };
 
 
@@ -361,6 +362,21 @@
                     }
                 }
             });
+        }
+
+        function getPastThreeMonths(currentDate) {
+            var dateObjects = [];
+            var oneMonth = 2629746000;
+
+            dateObjects.push(currentDate);
+
+            var lastMonth = currentDate - oneMonth;
+            dateObjects.push(lastMonth);
+
+            var twoMonthsAgo = currentDate - (oneMonth * 2);
+            dateObjects.push(twoMonthsAgo);
+
+            return dateObjects;
         }
 
     }
