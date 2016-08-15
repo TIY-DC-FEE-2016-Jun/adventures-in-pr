@@ -3,7 +3,11 @@
     <ul>
         <li class='categoryBlogs' ng-repeat='blog in catCtrl.allBlogs | orderBy: "-date"'>
             <a class='blogTitle'>{{blog.title}}</a>
-            <button class='deletePost btn btn-danger btn-sm' type='button' ng-click='catCtrl.delete(blog.id)'>Delete</button>
+            <button
+                ng-show='catCtrl.loggedIn()'
+                class='deletePost btn btn-danger btn-sm'
+                type='button'
+                ng-click='catCtrl.delete(blog.id)'>Delete</button>
         </li>
     </ul>
 </section>
