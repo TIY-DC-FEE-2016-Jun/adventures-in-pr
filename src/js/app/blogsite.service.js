@@ -54,17 +54,7 @@
          * @return  {Object}     the currentUser's info
          */
         function getLoggedInAuthor() {
-            return $http({
-                url: 'https://tiy-blog-api.herokuapp.com/api/Authors/' + currentUser.userId,
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': apiToken
-                },
-            })
-            .then(function(response) {
-                return response.data;
-            });
+            return currentUser;
         }
 
         /**

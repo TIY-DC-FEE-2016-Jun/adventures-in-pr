@@ -4,19 +4,18 @@
     angular.module('blog')
         .controller('CreatePostController', CreatePostController);
 
-    CreatePostController.$inject = ['blogsite', '$state'];
+    CreatePostController.$inject = ['$state', 'blogsite'];
 
-    function CreatePostController(blogsite, $state) {
+    function CreatePostController($state, blogsite) {
         var that = this;
         this.categories = [];
         this.blogPost = {};
         this.currentAuthor = null;
         this.createPost = createPost;
 
-
-        blogsite.getLoggedInAuthor()
+        blogsite.getAuthor(blogsite.getLoggedInAuthor().userId)
             .then(function(author) {
-                that.currentAuthor = author;
+                that.currentAuthor = author.name;
             });
 
         /**
