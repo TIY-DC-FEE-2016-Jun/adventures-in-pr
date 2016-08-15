@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
+    var EMAIL_REGEX = /[^@\s]+@.+\..+/;
+
     angular.module('blog')
         .factory('blogsite', BlogSiteService);
 
@@ -22,10 +24,9 @@
             getAllCategories: getAllCategories,
             getCategory: getCategory,
             submitBlogPost: submitBlogPost,
-            getAllBlogs: getAllBlogs,
             deleteBlogPost: deleteBlogPost,
             getPost: getPost,
-            getPostByDate: getPostByDate,
+            getPostsByDate: getPostsByDate,
             getPastThreeMonths: getPastThreeMonths
         };
 
@@ -93,20 +94,18 @@
          * @return {Promise}          XMLHttpRequest object that implements promise methods
          */
         function createUser(name, email, password) {
-            if (!name) {
-                return inputError('name');
+            if (typeof( name ) !== 'string' || !name.length ) {
+                return inputError('Please enter a valid name.');
             } else if (
-                    !email ||
-                    typeof( email )!== 'string' ||
-                    email.indexOf('@', '.') === -1
+                    typeof( email ) !== 'string' ||
+                    !EMAIL_REGEX.test(email)
                 ){
-                return inputError('email');
+                return inputError('Please enter a valid email.');
             } else if (
-                    !password ||
-                    typeof(password) !== 'string' ||
-                    (password.length < 8)
+                    typeof( password ) !== 'string' ||
+                    password.length < 8
                 ) {
-                return inputError('password');
+                return inputError('Please enter a valid password.');
             }
 
             return $http({
@@ -131,10 +130,13 @@
          *                           promise methods
          */
         function login(email, password) {
-            if (!email) {
-                return inputError('email');
-            } else if (!password) {
-                return inputError('password');
+            if (typeof( email ) !== 'string' ||
+                !EMAIL_REGEX.test(email)) {
+                return inputError('Please enter a valid email address.');
+            } else if (
+                typeof( password ) !== 'string' ||
+                password.length < 8) {
+                return inputError('Please enter a valid password.');
             }
 
             return $http({
@@ -183,13 +185,13 @@
 
         /**
          * Return an error if login fails
-         * @param  {String} field The invalid input
-         * @return {Promise}      A deferred XMLHttpRequest
-         *                        object with an error status of 401
+         * @param  {String} message The message to be displayed to user
+         * @return {Promise}        Rejected Promise with object with an error
+         *                          status of 400 and the specified message
          */
-        function inputError(field) {
-            var err = new Error('You need a ' + field + ' to login!');
-            err.status = '401';
+        function inputError(message) {
+            var err = new Error(message);
+            err.status = 400;
             return $q.reject(err);
         }
 
@@ -261,46 +263,6 @@
         }
 
         /**
-         * Retrieves all blog posts that exist in database
-         * @return {Promise}    an XHR object that can implement promise methods
-         */
-        function getAllBlogs() {
-            return $http({
-                method: 'get',
-                url: 'https://tiy-blog-api.herokuapp.com/api/Posts/',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(function(response) {
-                console.log('all blogs', response);
-                return updateBlogs(response.data);
-            });
-        }
-
-        /**
-         * Updates all individual blogs with another property inside of a blogs Array
-         * @return {Array}  updated each blog in array to include category and author name
-         */
-        function updateBlogs(blogs) {
-            if(!blogs || !(blogs instanceof Array)) {
-                return;
-            }
-            blogs.forEach(function(blog) {
-                getCategory(blog.categoryId)
-                    .then(function(category) {
-                        blog.category = category.name;
-                    });
-                getAuthor(blog.authorId)
-                    .then(function(author) {
-                        blog.authorName = author.name;
-                    });
-            });
-            console.log('updateBlogs function', blogs);
-            return blogs;
-        }
-
-        /**
          * deletes selected post by calling the api's delete method with the given id
          * @param  {String}     postId      Id of selected blog post
          * @return {Promise}    an XHR object that can implement promise methods
@@ -348,7 +310,7 @@
          * @param  {Number} offsetNum Offset parameter of which posts are retrieved
          * @return {Promise}          XMLHttpRequest object that implements promise methods
          */
-        function getPostByDate(limitNum, offsetNum) {
+        function getPostsByDate(limitNum, offsetNum) {
             return $http({
                 method: 'get',
                 url: 'https://tiy-blog-api.herokuapp.com/api/Posts/',
@@ -356,11 +318,20 @@
                     'Content-Type': 'application/json'
                 },
                 params: {
-                    'filter': {
-                        'limit': limitNum,
-                        'offset': offsetNum
+                    filter: {
+                        limit: limitNum,
+                        offset: offsetNum,
+                        order: 'date DESC',
+                        include: ['author', 'category']
                     }
                 }
+            })
+            .then(function(response) {
+                response.data.forEach(function(blog) {
+                    blog.firstSentence = blog.content.substring(0, blog.content.indexOf('.')+1);
+                    //TODO create a regex for index of to handle end of sentence with ?,!
+                });
+                return response.data;
             });
         }
 

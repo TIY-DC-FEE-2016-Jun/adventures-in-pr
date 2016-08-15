@@ -16,10 +16,7 @@
                 url: '/',
                 templateUrl: '/js/app/home.template.html',
                 controller: 'HomeController',
-                controllerAs: 'homeCtrl',
-                params: {
-                    posts: null
-                }
+                controllerAs: 'homeCtrl'
             })
             .state('about', {
                 url: '/about',
@@ -44,13 +41,10 @@
                 }
             })
             .state('post', {
-                url:'/post/:authorName/:postTitle',
+                url:'/post/:id',
                 templateUrl: '/js/posts/post.template.html',
                 controller: 'PostController',
-                controllerAs: 'postCtrl',
-                params: {
-                    postId: null
-                }
+                controllerAs: 'postCtrl'
             })
             .state('createUser', {
                 url: '/create-user',

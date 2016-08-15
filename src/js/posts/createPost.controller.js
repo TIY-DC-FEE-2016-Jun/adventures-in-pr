@@ -28,14 +28,16 @@
         function createPost(blogPost) {
             console.log(blogPost);
             blogPost.authorId = that.currentAuthor.id;
-            blogsite.submitBlogPost(blogPost);
-            that.blogPost = {};
-            blogsite.getAllBlogs()
-                .then(function(data) {
-                    $state.go('home', {
-                        posts: data
-                    });
+            blogsite.submitBlogPost(blogPost)
+                .then(function() {
+                    that.blogPost = {};
+                    $state.go('home');
+                })
+                .catch(function(response) {
+                    //TODO show a error message
+                    console.log(response);
                 });
+
         }
 
         blogsite.getAllCategories()
