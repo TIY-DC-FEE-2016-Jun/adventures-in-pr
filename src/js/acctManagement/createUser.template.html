@@ -6,7 +6,7 @@
         novalidate
         name='createUser'
         ng-submit='createUser.$valid && createUserCtrl.newAuthor()'
-        ng-hide='createUserCtrl.message'>
+        >
         <input
             class='form-control'
             type='text'
@@ -35,6 +35,6 @@
         {{createUserCtrl.message}}
     </p>
 
-    <button ng-show='createUserCtrl.message' ng-click='createUserCtrl.addAnother()'>Add another author</button>
+    <!-- <button ng-show='createUserCtrl.message' ng-click='createUserCtrl.addAnother()'>Add another author</button> -->
 
 </section>
