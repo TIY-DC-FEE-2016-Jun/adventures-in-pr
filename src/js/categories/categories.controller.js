@@ -4,9 +4,9 @@
     angular.module('blog')
         .controller('CategoriesController', CategoriesController);
 
-    CategoriesController.$inject = ['$stateParams', '$state', 'blogsite'];
+    CategoriesController.$inject = ['$stateParams', 'blogsite'];
 
-    function CategoriesController($stateParams, $state, blogsite) {
+    function CategoriesController($stateParams, blogsite) {
         var that = this;
         this.allBlogs = [];
         this.categoryId = $stateParams.categoryId;
