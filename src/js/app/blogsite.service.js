@@ -24,7 +24,8 @@
             submitBlogPost: submitBlogPost,
             getAllBlogs: getAllBlogs,
             deleteBlogPost: deleteBlogPost,
-            getPost: getPost
+            getPost: getPost,
+            getPostByDate: getPostByDate
         };
 
 
@@ -331,6 +332,33 @@
                 url: 'https://tiy-blog-api.herokuapp.com/api/Posts/' + postId,
                 headers: {
                     'Content-Type': 'application/json'
+                },
+                params: {
+                    'filter': {
+                        'include': ['author','category']
+                    }
+                }
+            });
+        }
+
+        /**
+         * Get older or newer posts with a limit on how many posts are returned
+         * @param  {Number} limitNum  Limit parameter of how many posts are retrieved
+         * @param  {Number} offsetNum Offset parameter of which posts are retrieved
+         * @return {Promise}          XMLHttpRequest object that implements promise methods
+         */
+        function getPostByDate(limitNum, offsetNum) {
+            return $http({
+                method: 'get',
+                url: 'https://tiy-blog-api.herokuapp.com/api/Posts/',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                params: {
+                    'filter': {
+                        'limit': limitNum,
+                        'offset': offsetNum
+                    }
                 }
             });
         }
