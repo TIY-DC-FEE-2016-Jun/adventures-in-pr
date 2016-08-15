@@ -1,9 +1,9 @@
 <section class='category'>
     <h3 class='viewTitle'>Posts in {{catCtrl.categoryName}}</h3>
     <ul>
-        <li class='categoryBlogs' ng-repeat='blog in catCtrl.allBlogs'>
+        <li class='categoryBlogs' ng-repeat='blog in catCtrl.allBlogs | orderBy: "-date"'>
             <a class='blogTitle'>{{blog.title}}</a>
-            <button class='deletePost btn btn-danger btn-sm' type='button' value='{{blog.id}}'>Delete</button>
+            <button class='deletePost btn btn-danger btn-sm' type='button' ng-click='catCtrl.delete(blog.id)'>Delete</button>
         </li>
     </ul>
 </section>
