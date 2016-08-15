@@ -37,13 +37,13 @@
                 <h3>Categories</h3>
                 <ul>
                     <li ng-repeat='category in index.categories'>
-                        <a ui-sref='category'>{{category.name}}</a>
+                        <a ui-sref='category({categoryId: category.id})'>{{category.name}}</a>
                     </li>
                 </ul>
             </section>
         </aside>
 
-        <main ui-view></main>
+        <main ng-cloak ui-view></main>
 
         <footer class='navbar navbar-default navbar-fixed-bottom navbar-inverse'>
 

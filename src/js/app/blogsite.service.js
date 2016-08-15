@@ -205,6 +205,7 @@
                 }
             })
             .then(function(response) {
+                console.log(response.data);
                 return response.data;
             });
         }
@@ -223,10 +224,15 @@
                 url: 'https://tiy-blog-api.herokuapp.com/api/Categories/' + categoryId,
                 headers: {
                     'Content-Type': 'application/json'
+                },
+                params: {
+                    'filter': {
+                        'include': 'posts'
+                    }
                 }
             })
             .then(function(response) {
-                return response.data.name;
+                return response.data;
             });
         }
 
@@ -281,8 +287,8 @@
             }
             blogs.forEach(function(blog) {
                 getCategory(blog.categoryId)
-                    .then(function(categoryname) {
-                        blog.category = categoryname;
+                    .then(function(category) {
+                        blog.category = category.name;
                     });
                 getAuthor(blog.authorId)
                     .then(function(author) {
@@ -295,8 +301,8 @@
 
         /**
          * deletes selected post by calling the api's delete method with the given id
-         * @param  {[type]} postId [description]
-         * @return {[type]}        [description]
+         * @param  {String}     postId      Id of selected blog post
+         * @return {Promise}    an XHR object that can implement promise methods
          */
         function deleteBlogPost(postId) {
             if (!postId) {
@@ -314,8 +320,8 @@
 
         /**
          * Retrieve a single blog post
-         * @param  {String} postId Id of selected blog post
-         * @return {Promise}       XMLHttpRequest object that implements promise methods
+         * @param  {String}     postId Id of selected blog post
+         * @return {Promise}    XMLHttpRequest object that implements promise methods
          */
         function getPost(postId) {
             if(!postId) {
@@ -356,6 +362,7 @@
                 }
             });
         }
+
     }
 
 })();

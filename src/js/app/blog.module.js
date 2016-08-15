@@ -62,10 +62,13 @@
                 }
             })
             .state('category', {
-                url: '/category',
+                url: '/category/:categoryId',
                 templateUrl: '/js/categories/category.template.html',
                 controller: 'CategoriesController',
-                controllerAs: 'catCtrl'
+                controllerAs: 'catCtrl',
+                params: {
+                    categoryId: null
+                }
             })
             .state('legal', {
                 url: '/legal',
