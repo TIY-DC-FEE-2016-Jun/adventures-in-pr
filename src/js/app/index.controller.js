@@ -32,7 +32,7 @@
         console.log(this.getMonths);
 
         this.goToMonth = function goToMonth(selMonth) {
-            $state.go('recentPosts', {'month': selMonth});
+            $state.go('recentPosts', {'month': selMonth, 'chosenMonth': selMonth});
         };
     }
 
