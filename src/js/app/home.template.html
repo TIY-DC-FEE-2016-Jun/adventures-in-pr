@@ -4,18 +4,18 @@
 
     <ul class='allBlogsPreview'>
 
-        <li class='blogPreview' ng-cloak ng-repeat='blog in homeCtrl.allBlogs | orderBy: "-date" | limitTo: 5'>
+        <li class='blogPreview' ng-cloak ng-repeat='blog in homeCtrl.allBlogs'>
             <div class='timestamp'>
                 <time class='time'>{{blog.date | date: "h:mm a"}}</time>
                 <time class='date'>{{blog.date | date: "d/M/yy"}}</time>
             </div>
-            <header ng-click='homeCtrl.goToPost( blog.authorName, blog.title, blog.id )'>
-                <h4>{{blog.title}}</h4>
-                <cite>by {{blog.authorName}}</cite>
+            <header>
+                <h4><a ui-sref='post({id: blog.id})'>{{blog.title}}</a></h4>
+                <cite>by {{blog.author.name}}</cite>
             </header>
-            <p class='blogContent'>{{blog.content}}</p>
+            <p class='blogContent'>{{blog.firstSentence}}</p>
             <footer>
-                <p>Read Post | {{blog.category}}</p>
+                <p>Read Post | {{blog.category.name}}</p>
             </footer>
         </li>
     </ul>

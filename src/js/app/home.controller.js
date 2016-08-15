@@ -14,23 +14,13 @@
         this.offset = 0;
         this.offsetIncrement = 5;
 
-        this.goToPost = function goToPost(author, title, id) {
-            $state.go('post', {'authorName': author, 'postTitle': title, 'postId': id});
-        };
 
+        //TODO Combine older and newer posts function to one.
         this.goToOlderPosts = function goToOlderPosts() {
             that.offset = (that.offset + that.offsetIncrement);
-            blogsite.getPostByDate(that.limit, that.offset)
+            blogsite.getPostsByDate(that.limit, that.offset)
                 .then(function(olderBlogs) {
-                    var olderBlogsArray = olderBlogs.data;
-                    console.log('olderBlogs', olderBlogsArray);
-                    if (olderBlogsArray === []) {
-                        return null;
-                    }
-                    olderBlogsArray.forEach(function(blog) {
-                        getFirstSentence(blog);
-                    });
-                    that.allBlogs = olderBlogsArray;
+                    that.allBlogs = olderBlogs;
                 })
                 .catch(function(err) {
                     console.error('unable to get older posts', err.status);
@@ -42,40 +32,23 @@
             if (that.offset < 0) {
                 that.offset = 0;
             }
-            blogsite.getPostByDate(that.limit, that.offset)
+            blogsite.getPostsByDate(that.limit, that.offset)
                 .then(function(newerBlogs) {
-                    var newerBlogsArray = newerBlogs.data;
-                    console.log('newerBlogs', newerBlogsArray);
-                    newerBlogsArray.forEach(function(blog) {
-                        getFirstSentence(blog);
-                    });
-                    that.allBlogs = newerBlogsArray;
+                    that.allBlogs = newerBlogs;
                 })
                 .catch(function(err) {
                     console.error('unable to get newer posts', err.status);
                 });
         };
 
-        this.goToPost = function goToPost(author, title, id) {
-            $state.go('post', {'authorName': author, 'postTitle': title, 'postId': id});
-        };
 
-
-        /**
-         * Assigns first sentence of blog post to content property of blog data
-         * @param  {Object} blog Object with the blog post data
-         * @return {void}
-         */
-        function getFirstSentence(blog) {
-            blog.content = blog.content.substring(0, blog.content.indexOf('.')+1) ;
-        }
-
-        blogsite.getAllBlogs()
+        blogsite.getPostsByDate(this.limit, this.offset)
             .then(function(blogs) {
-                blogs.forEach(function(blog) {
-                    getFirstSentence(blog);
-                });
                 that.allBlogs = blogs;
+            })
+            .catch(function(response) {
+                //TODO do somethign if can't retrieve blogs
+                console.log(response);
             });
 
     }

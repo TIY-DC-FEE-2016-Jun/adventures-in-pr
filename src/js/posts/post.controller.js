@@ -11,15 +11,12 @@
 
         this.message = null;
 
-        this.postId = $stateParams.postId;
-        console.log(this.postId);
-
         this.postData = {};
 
-        blogsite.getPost(this.postId)
+        blogsite.getPost($stateParams.id)
             .then(function(response) {
                 that.postData = response.data;
-                console.log(that.postData); 
+                console.log(that.postData);
             })
             .catch(function(err) {
                 console.log('unable to find post', err.status);

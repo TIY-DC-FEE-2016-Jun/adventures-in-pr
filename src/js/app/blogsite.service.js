@@ -24,10 +24,9 @@
             getAllCategories: getAllCategories,
             getCategory: getCategory,
             submitBlogPost: submitBlogPost,
-            getAllBlogs: getAllBlogs,
             deleteBlogPost: deleteBlogPost,
             getPost: getPost,
-            getPostByDate: getPostByDate,
+            getPostsByDate: getPostsByDate,
             getPastThreeMonths: getPastThreeMonths
         };
 
@@ -264,46 +263,6 @@
         }
 
         /**
-         * Retrieves all blog posts that exist in database
-         * @return {Promise}    an XHR object that can implement promise methods
-         */
-        function getAllBlogs() {
-            return $http({
-                method: 'get',
-                url: 'https://tiy-blog-api.herokuapp.com/api/Posts/',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(function(response) {
-                console.log(response);
-                return updateBlogs(response.data);
-            });
-        }
-
-        /**
-         * Updates all individual blogs with another property inside of a blogs Array
-         * @return {Array}  updated each blog in array to include category and author name
-         */
-        function updateBlogs(blogs) {
-            if(!blogs || !(blogs instanceof Array)) {
-                return;
-            }
-            blogs.forEach(function(blog) {
-                getCategory(blog.categoryId)
-                    .then(function(category) {
-                        blog.category = category.name;
-                    });
-                getAuthor(blog.authorId)
-                    .then(function(author) {
-                        blog.authorName = author.name;
-                    });
-            });
-            console.log('updateBlogs function', blogs);
-            return blogs;
-        }
-
-        /**
          * deletes selected post by calling the api's delete method with the given id
          * @param  {String}     postId      Id of selected blog post
          * @return {Promise}    an XHR object that can implement promise methods
@@ -351,7 +310,7 @@
          * @param  {Number} offsetNum Offset parameter of which posts are retrieved
          * @return {Promise}          XMLHttpRequest object that implements promise methods
          */
-        function getPostByDate(limitNum, offsetNum) {
+        function getPostsByDate(limitNum, offsetNum) {
             return $http({
                 method: 'get',
                 url: 'https://tiy-blog-api.herokuapp.com/api/Posts/',
@@ -359,11 +318,20 @@
                     'Content-Type': 'application/json'
                 },
                 params: {
-                    'filter': {
-                        'limit': limitNum,
-                        'offset': offsetNum
+                    filter: {
+                        limit: limitNum,
+                        offset: offsetNum,
+                        order: 'date DESC',
+                        include: ['author', 'category']
                     }
                 }
+            })
+            .then(function(response) {
+                response.data.forEach(function(blog) {
+                    blog.firstSentence = blog.content.substring(0, blog.content.indexOf('.')+1);
+                    //TODO create a regex for index of to handle end of sentence with ?,!
+                });
+                return response.data;
             });
         }
 
