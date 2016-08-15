@@ -36,7 +36,12 @@
                 url: '/recent/:month',
                 templateUrl: '/js/posts/recentPosts.template.html',
                 controller: 'RecentPostsController',
-                controllerAs: 'recentCtrl'
+                controllerAs: 'recentCtrl',
+                params: {
+                    chosenMonth: null,
+                    allDates: null,
+                    dateIndex: null
+                }
             })
             .state('post', {
                 url:'/post/:authorName/:postTitle',
