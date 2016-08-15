@@ -32,7 +32,7 @@
         this.limit = 5;
         this.offset = 0;
         this.offsetIncrement = 5;
-        
+
         this.goToOlderPosts = function goToOlderPosts() {
             that.offset = (that.offset + that.offsetIncrement);
 
@@ -53,10 +53,30 @@
                 .catch(function(err) {
                     console.error('unable to get older posts', err.status);
                 });
-
-            console.log('new offset', that.offset);
         };
 
+        this.goToNewerPosts = function goToNewerPosts() {
+            that.offset = (that.offset - that.offsetIncrement);
+
+            if (that.offset < 0) {
+                that.offset = 0;
+            }
+
+            blogsite.getPostByDate(that.limit, that.offset)
+                .then(function(newerBlogs) {
+                    var newerBlogsArray = newerBlogs.data;
+                    console.log('newerBlogs', newerBlogsArray);
+
+                    newerBlogsArray.forEach(function(blog) {
+                        getFirstSentence(blog);
+                    });
+
+                    that.allBlogs = newerBlogsArray;
+                })
+                .catch(function(err) {
+                    console.error('unable to get newer posts', err.status);
+                });
+        };
 
         this.goToPost = function goToPost(author, title, id) {
             $state.go('post', {'authorName': author, 'postTitle': title, 'postId': id});
