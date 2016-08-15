@@ -3,7 +3,7 @@
 
     angular.module('blog', ['ui.router'])
         .config(blogConfig)
-        .run(ghStartup);
+        .run(blogStartup);
 
     blogConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -81,9 +81,9 @@
             });
     }
 
-    ghStartup.$inject = ['$rootScope', '$state', 'blogsite'];
+    blogStartup.$inject = ['$rootScope', '$state', 'blogsite'];
 
-    function ghStartup($rootScope, $state, blogsite) {
+    function blogStartup($rootScope, $state, blogsite) {
         $rootScope.$on('$stateChangeStart', function(e, toState) {
             if (toState.secure && !blogsite.isLoggedIn()) {
                 e.preventDefault();
