@@ -25,7 +25,7 @@
                 console.error(error);
             });
 
-        this.currentDate = Date.now();
+        this.currentDate = new Date();
 
 
         this.getMonths = blogsite.getPastThreeMonths(this.currentDate);

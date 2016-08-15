@@ -11,8 +11,7 @@
         this.allDates = JSON.parse($stateParams.allDates);
         this.dateIndex = $stateParams.dateIndex;
 
-        this.currentDate = this.allDates[this.dateIndex];
-        console.log(this.currentDate);
+        this.selMonth = new Date(this.allDates[this.dateIndex]).getMonth();
 
 
     }
