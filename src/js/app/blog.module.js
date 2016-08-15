@@ -33,8 +33,10 @@
                 secure: true
             })
             .state('recentPosts', {
-                url: '/recent',
-                templateUrl: '/js/posts/recentPosts.template.html'
+                url: '/recent/:month',
+                templateUrl: '/js/posts/recentPosts.template.html',
+                controller: 'RecentPostsController',
+                controllerAs: 'recentCtrl'
             })
             .state('post', {
                 url:'/post/:authorName/:postTitle',

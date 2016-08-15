@@ -4,9 +4,9 @@
     angular.module('blog')
         .controller('IndexController', IndexController);
 
-    IndexController.$inject = ['blogsite'];
+    IndexController.$inject = ['$state', 'blogsite'];
 
-    function IndexController(blogsite) {
+    function IndexController($state, blogsite) {
         var that = this;
         this.categories = [];
 
@@ -19,12 +19,8 @@
                 console.error(error);
             });
 
-        this.currentDate = Date.now();
-
-        this.getPastMonths = function getPastMonths(numMonthsBack) {
-            var oneMonth = 2629746000;
-
-            return that.currentDate - (oneMonth * numMonthsBack);
+        this.goToMonth = function goToMonth(selMonth) {
+            $state.go('recentPosts', {'month': selMonth});
         };
     }
 
