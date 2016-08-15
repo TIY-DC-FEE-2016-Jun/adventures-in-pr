@@ -12,7 +12,8 @@
         this.categoryId = $stateParams.categoryId;
         this.categoryName = null;
         this.delete = deletePost;
-
+        this.loggedIn = blogsite.isLoggedIn;
+        
         blogsite.getCategory(that.categoryId)
             .then(function(blogs) {
                 that.allBlogs = blogs.posts;
