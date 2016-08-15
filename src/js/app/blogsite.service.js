@@ -364,6 +364,13 @@
             });
         }
 
+        /**
+         * Return array of date objects from the past three months
+         * starting with the current month
+         * @param  {Object} currentDate Date object for current date
+         * @return {Array}             Array of date objects for the
+         *                             past three months
+         */
         function getPastThreeMonths(currentDate) {
             var dateObjects = [];
             var oneMonth = 2629746000;
