@@ -19,7 +19,13 @@
                 console.error(error);
             });
 
+        this.currentDate = Date.now();
 
+        this.getPastMonths = function getPastMonths(numMonthsBack) {
+            var oneMonth = 2629746000;
+
+            return that.currentDate - (oneMonth * numMonthsBack);
+        };
     }
 
 })();
