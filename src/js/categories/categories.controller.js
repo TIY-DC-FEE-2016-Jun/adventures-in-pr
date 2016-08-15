@@ -13,19 +13,11 @@
         this.categoryName = null;
         this.delete = deletePost;
 
-        categoryInit();
-
-        /**
-         * Loads the info needed for the category view
-         * @return {Void}
-         */
-        function categoryInit() {
-            blogsite.getCategory(that.categoryId)
-                .then(function(blogs) {
-                    that.allBlogs = blogs.posts;
-                    that.categoryName = blogs.name;
-                });
-        }
+        blogsite.getCategory(that.categoryId)
+            .then(function(blogs) {
+                that.allBlogs = blogs.posts;
+                that.categoryName = blogs.name;
+            });
 
         /**
          * Deletes a post with given blog Id
