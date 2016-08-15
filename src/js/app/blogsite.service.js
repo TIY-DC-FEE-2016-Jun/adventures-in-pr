@@ -273,7 +273,7 @@
                 }
             })
             .then(function(response) {
-                console.log(response);
+                console.log('all blogs', response);
                 return updateBlogs(response.data);
             });
         }
