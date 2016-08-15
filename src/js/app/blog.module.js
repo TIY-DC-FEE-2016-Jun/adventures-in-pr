@@ -3,7 +3,7 @@
 
     angular.module('blog', ['ui.router'])
         .config(blogConfig)
-        .run(ghStartup);
+        .run(blogStartup);
 
     blogConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -33,7 +33,12 @@
                 url: '/recent/:month',
                 templateUrl: '/js/posts/recentPosts.template.html',
                 controller: 'RecentPostsController',
-                controllerAs: 'recentCtrl'
+                controllerAs: 'recentCtrl',
+                params: {
+                    chosenMonth: null,
+                    allDates: null,
+                    dateIndex: null
+                }
             })
             .state('post', {
                 url:'/post/:id',
@@ -76,9 +81,9 @@
             });
     }
 
-    ghStartup.$inject = ['$rootScope', '$state', 'blogsite'];
+    blogStartup.$inject = ['$rootScope', '$state', 'blogsite'];
 
-    function ghStartup($rootScope, $state, blogsite) {
+    function blogStartup($rootScope, $state, blogsite) {
         $rootScope.$on('$stateChangeStart', function(e, toState) {
             if (toState.secure && !blogsite.isLoggedIn()) {
                 e.preventDefault();

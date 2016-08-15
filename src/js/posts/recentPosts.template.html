@@ -1,8 +1,8 @@
 <!-- <section class='recent-posts'>
     <h3 class='viewTitle'>Posts from [month]</h3>
     <ul>
-        <li>
-            <a></a>
+        <li ng-repeat='blog in recentCtrl.monthlyBlogs'>
+            <a>{{blog.title}}</a>
             <button>Delete</button>
         </li>
     </ul>

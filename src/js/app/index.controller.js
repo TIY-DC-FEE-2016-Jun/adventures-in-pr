@@ -25,14 +25,19 @@
                 console.error(error);
             });
 
-        this.currentDate = Date.now();
+        this.currentDate = new Date();
 
 
         this.getMonths = blogsite.getPastThreeMonths(this.currentDate);
         console.log(this.getMonths);
 
-        this.goToMonth = function goToMonth(selMonth) {
-            $state.go('recentPosts', {'month': selMonth});
+        this.goToMonth = function goToMonth(selMonth, indexNum) {
+            $state.go('recentPosts', {
+                'month': selMonth,
+                'chosenMonth': selMonth,
+                'allDates': angular.toJson(that.getMonths),
+                'dateIndex': indexNum
+            });
         };
     }
 
