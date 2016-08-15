@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
+    var EMAIL_REGEX = /[^@\s]+@.+\..+/;
+
     angular.module('blog')
         .factory('blogsite', BlogSiteService);
 
@@ -93,20 +95,18 @@
          * @return {Promise}          XMLHttpRequest object that implements promise methods
          */
         function createUser(name, email, password) {
-            if (!name) {
-                return inputError('name');
+            if (typeof( name ) !== 'string' || !name.length ) {
+                return inputError('Please enter a valid name.');
             } else if (
-                    !email ||
-                    typeof( email )!== 'string' ||
-                    email.indexOf('@', '.') === -1
+                    typeof( email ) !== 'string' ||
+                    !EMAIL_REGEX.test(email)
                 ){
-                return inputError('email');
+                return inputError('Please enter a valid email.');
             } else if (
-                    !password ||
-                    typeof(password) !== 'string' ||
-                    (password.length < 8)
+                    typeof( password ) !== 'string' ||
+                    password.length < 8
                 ) {
-                return inputError('password');
+                return inputError('Please enter a valid password.');
             }
 
             return $http({
@@ -131,10 +131,13 @@
          *                           promise methods
          */
         function login(email, password) {
-            if (!email) {
-                return inputError('email');
-            } else if (!password) {
-                return inputError('password');
+            if (typeof( email ) !== 'string' ||
+                !EMAIL_REGEX.test(email)) {
+                return inputError('Please enter a valid email address.');
+            } else if (
+                typeof( password ) !== 'string' ||
+                password.length < 8) {
+                return inputError('Please enter a valid password.');
             }
 
             return $http({
@@ -183,13 +186,13 @@
 
         /**
          * Return an error if login fails
-         * @param  {String} field The invalid input
-         * @return {Promise}      A deferred XMLHttpRequest
-         *                        object with an error status of 401
+         * @param  {String} message The message to be displayed to user
+         * @return {Promise}        Rejected Promise with object with an error
+         *                          status of 400 and the specified message
          */
-        function inputError(field) {
-            var err = new Error('You need a ' + field + ' to login!');
-            err.status = '401';
+        function inputError(message) {
+            var err = new Error(message);
+            err.status = 400;
             return $q.reject(err);
         }
 

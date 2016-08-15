@@ -138,7 +138,7 @@
                     done();
                 })
                 .catch(function(err) {
-                    assert.strictEqual(err.status, '401', 'cannot create new author w/o name');
+                    assert.strictEqual(err.status, 400, 'cannot create new author w/o name');
                     done();
                 });
 
@@ -155,7 +155,7 @@
                     done();
                 })
                 .catch(function(err) {
-                    assert.strictEqual(err.status, '401', 'cannot create new author w/o name');
+                    assert.strictEqual(err.status, 400, 'cannot create new author w/o name');
                     done();
                 });
 
@@ -172,7 +172,7 @@
                     done();
                 })
                 .catch(function(err) {
-                    assert.strictEqual(err.status, '401', 'cannot create new author w/o email');
+                    assert.strictEqual(err.status, 400, 'cannot create new author w/o email');
                     done();
                 });
 
@@ -191,7 +191,7 @@
                 .catch(function(err) {
                     assert.strictEqual(
                         err.status,
-                        '401',
+                        400,
                         'cannot create new author with invalid email'
                     );
                     done();
@@ -210,7 +210,7 @@
                     done();
                 })
                 .catch(function(err) {
-                    assert.strictEqual(err.status, '401', 'cannot create new author w/o password');
+                    assert.strictEqual(err.status, 400, 'cannot create new author w/o password');
                     done();
                 });
 
@@ -231,7 +231,7 @@
                 .catch(function(err) {
                     assert.strictEqual(
                         err.status,
-                        '401',
+                        400,
                         'cannot create new author w/o valid password'
                     );
                     done();

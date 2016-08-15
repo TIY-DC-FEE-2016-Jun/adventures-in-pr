@@ -16,9 +16,15 @@
             name='password'
             ng-model='loginCtrl.userInfo.password'
             placeholder='password'
+            min-length='8'
             required>
         <input class='login-btn btn btn-primary btn-sm' type='submit' value='login'>
     </form>
+
+    <div ng-show='!login.$valid'>
+        <p ng-show='login.email.$touched && !login.email.$valid'>Please confirm your email address to log in.</p>
+        <p ng-show='login.password.$touched && !login.password.$valid'>Please confirm your password to log in.</p>
+    </div>
 
     <p class='alert alert-warning' ng-show='loginCtrl.message'>
         {{loginCtrl.message}}
