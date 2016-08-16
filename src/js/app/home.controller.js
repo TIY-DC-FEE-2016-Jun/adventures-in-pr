@@ -4,9 +4,9 @@
     angular.module('blog')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$state', 'blogsite'];
+    HomeController.$inject = ['blogsite'];
 
-    function HomeController($state, blogsite) {
+    function HomeController(blogsite) {
         var that = this;
 
         this.allBlogs = [];

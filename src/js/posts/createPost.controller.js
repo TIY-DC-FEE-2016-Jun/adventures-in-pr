@@ -4,9 +4,9 @@
     angular.module('blog')
         .controller('CreatePostController', CreatePostController);
 
-    CreatePostController.$inject = ['$state', 'blogsite'];
+    CreatePostController.$inject = ['$state', '$q', 'blogsite'];
 
-    function CreatePostController($state, blogsite) {
+    function CreatePostController($state, $q, blogsite) {
         var that = this;
         this.categories = [];
         this.blogPost = {};
@@ -22,12 +22,14 @@
          * Sends a blogPost to the service submitBlogPost and then resets
          * blogPost to be an empty object to reset form.
          * @param  {Object}  blogPost contains blogpost title, content, and category id
-         * @return {Void}
+         * @return {Promise}
          */
         function createPost(blogPost) {
             console.log(blogPost);
-            blogPost.authorId = that.currentAuthor.id;
-            blogsite.submitBlogPost(blogPost)
+            if(!blogPost) {
+                return $q.reject(new Error('please provide blogPost'));
+            }
+            return blogsite.submitBlogPost(blogPost)
                 .then(function() {
                     that.blogPost = {};
                     $state.go('home');
